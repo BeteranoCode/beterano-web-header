@@ -50,7 +50,16 @@
   color: #FCD20B;
 }
 
+/* Icono de idioma en todas las resoluciones */
+#lang-btn img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Posicionamiento del selector */
 .lang-selector {
+  margin-left: auto;
   position: relative;
 }
 
@@ -61,13 +70,7 @@
   padding: 0;
 }
 
-@media (max-width: 768px) {
-  #lang-btn img {
-    width: 20px;
-    height: 20px;
-  }
-}
-
+/* Menú desplegable de idiomas */
 .lang-menu {
   display: none;
   position: absolute;
@@ -99,6 +102,7 @@
   color: #000;
 }
 
+/* Responsive para móvil */
 @media (max-width: 768px) {
   .header-container {
     flex-direction: column;
@@ -120,5 +124,15 @@
 
   .nav-wrapper {
     width: 100%;
+  }
+
+  .lang-selector {
+    align-self: flex-end;
+    margin-top: 10px;
+  }
+
+  #lang-btn img {
+    width: 20px;
+    height: 20px;
   }
 }
