@@ -1,38 +1,34 @@
 <header id="site-header">
   <div class="header-container">
-    
-    <!-- LADO IZQUIERDO: LOGO -->
-    <div class="header-left">
-      <a href="/index.html" class="logo-link">
-        <img src="/assets/logo_header.svg" alt="BETERANO" class="logo" onerror="this.style.display='none';this.parentNode.textContent='BETERANO'" />
-      </a>
-    </div>
+    <a href="/find-a-restorer/index.html" class="logo-link">
+      <img src="./assets/logo_header.svg" alt="BETERANO" class="logo" />
+    </a>
 
-    <!-- LADO DERECHO: MENÚ Y SELECTOR DE IDIOMA -->
-    <div class="header-right">
-      <nav class="nav-wrapper">
-        <ul class="nav-list">
-          <li><a id="nav-home" data-i18n="home" href="/index.html">Inicio</a></li>
-          <li><a id="nav-club-wa" data-i18n="clubWA" href="#">Club Whatsapp</a></li>
-          <li><a id="nav-market" data-i18n="market" href="#">Market</a></li>
-          <li><a id="nav-mech-ai" data-i18n="mechAI" href="#">Mech AI</a></li>
-          <li><a id="nav-find-a-restorer" data-i18n="findRestorer" href="#">Encuentra un restaurador</a></li>
-          <li><a id="nav-apps" data-i18n="apps" href="#">Apps</a></li>
-          <li><a id="nav-shop" data-i18n="shop" href="#">Shop</a></li>
-        </ul>
-      </nav>
+    <button id="menu-toggle" class="hamburger" aria-label="Menú">
+      ☰
+    </button>
 
-      <div class="lang-selector">
-        <button id="lang-btn" aria-label="Idioma" type="button">
-          <img src="/assets/lang-icon.svg" alt="Idioma" />
-        </button>
-        <div id="lang-menu" class="lang-menu">
-          <button type="button" data-lang="es">ES</button>
-          <button type="button" data-lang="en">EN</button>
-          <button type="button" data-lang="de">DE</button>
-        </div>
-      </div>
-    </div>
+    <nav class="nav-wrapper">
+      <ul class="nav-list">
+        <li><a href="/index.html" data-i18n="home">Inicio</a></li>
+        <li><a href="#" data-i18n="clubWA">Club Whatsapp</a></li>
+        <li><a href="#" data-i18n="market">Market</a></li>
+        <li><a href="#" data-i18n="mechAI">Mech AI</a></li>
+        <li><a href="#" data-i18n="findRestorer">Encuentra un restaurador</a></li>
+        <li><a href="#" data-i18n="apps">Apps</a></li>
+        <li><a href="#" data-i18n="shop">Shop</a></li>
+        <li class="lang-selector">
+          <button id="lang-btn" aria-label="Idioma">
+            <img src="./assets/lang-icon.svg" alt="Idioma" />
+          </button>
+          <div id="lang-menu" class="lang-menu">
+            <button data-lang="es">ES</button>
+            <button data-lang="en">EN</button>
+            <button data-lang="de">DE</button>
+          </div>
+        </li>
+      </ul>
+    </nav>
   </div>
 </header>
 
@@ -43,8 +39,8 @@
     font-family: 'Oswald', sans-serif;
     background: #fff;
     color: #000;
-    padding: 16px 40px;
     border-bottom: 1px solid #eee;
+    padding: 16px 40px;
   }
 
   .header-container {
@@ -55,37 +51,27 @@
     margin: 0 auto;
   }
 
-  .header-left {
-    display: flex;
-    align-items: center;
-  }
-
-  .header-left .logo {
+  .logo-link .logo {
     height: 48px;
-  }
-
-  .header-right {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
   }
 
   .nav-wrapper {
     display: flex;
+    align-items: center;
   }
 
   .nav-list {
-    list-style: none;
     display: flex;
     gap: 2rem;
-    align-items: center;
-    padding: 0;
+    list-style: none;
     margin: 0;
+    padding: 0;
+    align-items: center;
   }
 
   .nav-list a {
-    color: #000;
     text-decoration: none;
+    color: #000;
     transition: color 0.3s;
     font-size: 1rem;
   }
@@ -102,7 +88,6 @@
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0;
   }
 
   #lang-btn img {
@@ -126,14 +111,13 @@
 
   .lang-menu button {
     display: block;
-    width: 100%;
     background: none;
     border: none;
-    color: #000;
     padding: 5px 10px;
-    font-family: 'Oswald', sans-serif;
     text-align: left;
+    font-family: 'Oswald', sans-serif;
     cursor: pointer;
+    width: 100%;
   }
 
   .lang-menu button:hover {
@@ -141,17 +125,27 @@
     color: #000;
   }
 
+  .hamburger {
+    display: none;
+    background: none;
+    font-size: 28px;
+    border: none;
+    cursor: pointer;
+  }
+
   @media (max-width: 768px) {
-    .header-container {
-      flex-direction: column;
-      align-items: flex-start;
+    .hamburger {
+      display: block;
     }
 
-    .header-right {
-      flex-direction: column;
-      align-items: flex-start;
+    .nav-wrapper {
+      display: none;
       width: 100%;
-      margin-top: 16px;
+    }
+
+    .nav-wrapper.show {
+      display: block;
+      margin-top: 1rem;
     }
 
     .nav-list {
@@ -159,5 +153,33 @@
       align-items: flex-start;
       gap: 1rem;
     }
+
+    .lang-menu {
+      top: auto;
+      bottom: -90px;
+    }
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById("menu-toggle");
+    const nav = document.querySelector(".nav-wrapper");
+    const langBtn = document.getElementById("lang-btn");
+    const langMenu = document.getElementById("lang-menu");
+
+    toggle?.addEventListener("click", () => {
+      nav.classList.toggle("show");
+    });
+
+    langBtn?.addEventListener("click", () => {
+      langMenu.classList.toggle("show");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!langBtn.contains(e.target) && !langMenu.contains(e.target)) {
+        langMenu.classList.remove("show");
+      }
+    });
+  });
+</script>
