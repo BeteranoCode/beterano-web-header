@@ -1,12 +1,15 @@
 <header id="site-header">
   <div class="header-container">
-    <div class="logo-wrapper">
-      <a href="/find-a-restorer/index.html" class="logo-link">
-        <img src="./assets/logo_header.svg" alt="BETERANO" class="logo" onerror="this.style.display='none';this.parentNode.textContent='BETERANO'" />
+    
+    <!-- LADO IZQUIERDO: LOGO -->
+    <div class="header-left">
+      <a href="/index.html" class="logo-link">
+        <img src="/assets/logo_header.svg" alt="BETERANO" class="logo" onerror="this.style.display='none';this.parentNode.textContent='BETERANO'" />
       </a>
     </div>
 
-    <div class="nav-actions">
+    <!-- LADO DERECHO: MENÚ Y SELECTOR DE IDIOMA -->
+    <div class="header-right">
       <nav class="nav-wrapper">
         <ul class="nav-list">
           <li><a id="nav-home" data-i18n="home" href="/index.html">Inicio</a></li>
@@ -21,7 +24,7 @@
 
       <div class="lang-selector">
         <button id="lang-btn" aria-label="Idioma" type="button">
-          <img src="./assets/lang-icon.svg" alt="Idioma" />
+          <img src="/assets/lang-icon.svg" alt="Idioma" />
         </button>
         <div id="lang-menu" class="lang-menu">
           <button type="button" data-lang="es">ES</button>
@@ -46,17 +49,22 @@
 
   .header-container {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     max-width: 1400px;
     margin: 0 auto;
   }
 
-  .logo-wrapper .logo {
+  .header-left {
+    display: flex;
+    align-items: center;
+  }
+
+  .header-left .logo {
     height: 48px;
   }
 
-  .nav-actions {
+  .header-right {
     display: flex;
     align-items: center;
     gap: 2rem;
@@ -139,21 +147,17 @@
       align-items: flex-start;
     }
 
-    .nav-actions {
+    .header-right {
       flex-direction: column;
       align-items: flex-start;
       width: 100%;
+      margin-top: 16px;
     }
 
     .nav-list {
       flex-direction: column;
       align-items: flex-start;
       gap: 1rem;
-      margin-top: 20px;
-    }
-
-    .nav-wrapper {
-      width: 100%;
     }
   }
 </style>
