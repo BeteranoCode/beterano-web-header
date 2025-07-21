@@ -61,9 +61,11 @@
   padding: 0;
 }
 
-#lang-btn img {
-  width: 24px;
-  height: 24px;
+@media (max-width: 768px) {
+  #lang-btn img {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .lang-menu {

@@ -1,19 +1,19 @@
 <header id="site-header">
   <div class="header-container">
     <div class="logo-wrapper">
-      <a href="/" class="logo-link">
-        <img src="/header/assets/logo_header.svg" alt="BETERANO" class="logo" onerror="this.style.display='none';this.parentNode.textContent='BETERANO'" />
+      <a href="/find-a-restorer/index.html" class="logo-link">
+        <img src="./assets/logo_header.svg" alt="BETERANO" class="logo" onerror="this.style.display='none';this.parentNode.textContent='BETERANO'" />
       </a>
     </div>
 
     <div class="nav-actions">
       <nav class="nav-wrapper">
         <ul class="nav-list">
-          <li><a id="nav-home" data-i18n="home" href="/">Inicio</a></li>
+          <li><a id="nav-home" data-i18n="home" href="/index.html">Inicio</a></li>
           <li><a id="nav-club-wa" data-i18n="clubWA" href="#">Club Whatsapp</a></li>
           <li><a id="nav-market" data-i18n="market" href="#">Market</a></li>
           <li><a id="nav-mech-ai" data-i18n="mechAI" href="#">Mech AI</a></li>
-          <li><a id="nav-find-a-restorer" data-i18n="findRestorer" href="https://beteranocode.github.io/find-a-restorer/">Encuentra un restaurador</a></li>
+          <li><a id="nav-find-a-restorer" data-i18n="findRestorer" href="#">Encuentra un restaurador</a></li>
           <li><a id="nav-apps" data-i18n="apps" href="#">Apps</a></li>
           <li><a id="nav-shop" data-i18n="shop" href="#">Shop</a></li>
         </ul>
@@ -21,7 +21,7 @@
 
       <div class="lang-selector">
         <button id="lang-btn" aria-label="Idioma" type="button">
-          <img src="/header/assets/lang-icon.svg" alt="Idioma" />
+          <img src="./assets/lang-icon.svg" alt="Idioma" />
         </button>
         <div id="lang-menu" class="lang-menu">
           <button type="button" data-lang="es">ES</button>
@@ -32,3 +32,128 @@
     </div>
   </div>
 </header>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&display=swap');
+
+  #site-header {
+    font-family: 'Oswald', sans-serif;
+    background: #fff;
+    color: #000;
+    padding: 16px 40px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .logo-wrapper .logo {
+    height: 48px;
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-wrapper {
+    display: flex;
+  }
+
+  .nav-list {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-list a {
+    color: #000;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 1rem;
+  }
+
+  .nav-list a:hover {
+    color: #FCD20B;
+  }
+
+  .lang-selector {
+    position: relative;
+  }
+
+  #lang-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  #lang-btn img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .lang-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 32px;
+    background: #fff;
+    border: 1px solid #000;
+    z-index: 10;
+  }
+
+  .lang-menu.show {
+    display: block;
+  }
+
+  .lang-menu button {
+    display: block;
+    width: 100%;
+    background: none;
+    border: none;
+    color: #000;
+    padding: 5px 10px;
+    font-family: 'Oswald', sans-serif;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .lang-menu button:hover {
+    background: #FCD20B;
+    color: #000;
+  }
+
+  @media (max-width: 768px) {
+    .header-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .nav-actions {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .nav-list {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-top: 20px;
+    }
+
+    .nav-wrapper {
+      width: 100%;
+    }
+  }
+</style>
