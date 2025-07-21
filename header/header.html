@@ -161,25 +161,5 @@
   }
 </style>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const toggle = document.getElementById("menu-toggle");
-    const nav = document.querySelector(".nav-wrapper");
-    const langBtn = document.getElementById("lang-btn");
-    const langMenu = document.getElementById("lang-menu");
+<script src="https://beteranocode.github.io/header/hamburger.js"></script>
 
-    toggle?.addEventListener("click", () => {
-      nav.classList.toggle("show");
-    });
-
-    langBtn?.addEventListener("click", () => {
-      langMenu.classList.toggle("show");
-    });
-
-    document.addEventListener("click", (e) => {
-      if (!langBtn.contains(e.target) && !langMenu.contains(e.target)) {
-        langMenu.classList.remove("show");
-      }
-    });
-  });
-</script>
