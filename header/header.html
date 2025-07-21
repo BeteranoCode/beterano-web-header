@@ -1,18 +1,34 @@
 <header id="site-header">
   <div class="header-container">
     <div class="logo-wrapper">
-      <a href="/index.html" class="logo-link">
-        <img src="/header/assets/logo_header.svg" alt="BETERANO" class="logo" />
+      <a href="/" class="logo-link">
+        <img src="/header/assets/logo_header.svg" alt="BETERANO" class="logo" onerror="this.style.display='none';this.parentNode.textContent='BETERANO'" />
       </a>
     </div>
-    <nav class="nav-wrapper" id="nav-menu">
-      <ul class="nav-list">
-        <li><a href="/index.html" data-i18n="home">Inicio</a></li>
-        <li><a href="#" data-i18n="clubWA">Club Whatsapp</a></li>
-        <li><a href="#" data-i18n="market">Market</a></li>
-        <li><a href="#" data-i18n="apps">Apps</a></li>
-      </ul>
-    </nav>
-    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+
+    <div class="nav-actions">
+      <nav class="nav-wrapper">
+        <ul class="nav-list">
+          <li><a id="nav-home" data-i18n="home" href="/">Inicio</a></li>
+          <li><a id="nav-club-wa" data-i18n="clubWA" href="#">Club Whatsapp</a></li>
+          <li><a id="nav-market" data-i18n="market" href="#">Market</a></li>
+          <li><a id="nav-mech-ai" data-i18n="mechAI" href="#">Mech AI</a></li>
+          <li><a id="nav-find-a-restorer" data-i18n="findRestorer" href="https://beteranocode.github.io/find-a-restorer/">Encuentra un restaurador</a></li>
+          <li><a id="nav-apps" data-i18n="apps" href="#">Apps</a></li>
+          <li><a id="nav-shop" data-i18n="shop" href="#">Shop</a></li>
+        </ul>
+      </nav>
+
+      <div class="lang-selector">
+        <button id="lang-btn" aria-label="Idioma" type="button">
+          <img src="/header/assets/lang-icon.svg" alt="Idioma" />
+        </button>
+        <div id="lang-menu" class="lang-menu">
+          <button type="button" data-lang="es">ES</button>
+          <button type="button" data-lang="en">EN</button>
+          <button type="button" data-lang="de">DE</button>
+        </div>
+      </div>
+    </div>
   </div>
 </header>

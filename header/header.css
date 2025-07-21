@@ -1,59 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&display=swap');
+
 #site-header {
-  background-color: #000;
-  color: #fff;
-  width: 100%;
   font-family: 'Oswald', sans-serif;
+  background: #fff;
+  color: #000;
+  padding: 16px 40px;
+  border-bottom: 1px solid #eee;
 }
+
 .header-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  justify-content: space-between;
+  max-width: 1400px;
+  margin: 0 auto;
 }
-.logo {
-  height: 40px;
+
+.logo-wrapper .logo {
+  height: 48px;
 }
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
 .nav-wrapper {
   display: flex;
 }
+
 .nav-list {
-  display: flex;
   list-style: none;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  padding: 0;
   margin: 0;
+}
+
+.nav-list a {
+  color: #000;
+  text-decoration: none;
+  transition: color 0.3s;
+  font-size: 1rem;
+}
+
+.nav-list a:hover {
+  color: #FCD20B;
+}
+
+.lang-selector {
+  position: relative;
+}
+
+#lang-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
   padding: 0;
 }
-.nav-list li {
-  margin-left: 20px;
+
+#lang-btn img {
+  width: 24px;
+  height: 24px;
 }
-.nav-list a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-}
-.menu-toggle {
+
+.lang-menu {
   display: none;
-  font-size: 28px;
-  cursor: pointer;
-  color: white;
+  position: absolute;
+  right: 0;
+  top: 32px;
+  background: #fff;
+  border: 1px solid #000;
+  z-index: 10;
 }
+
+.lang-menu.show {
+  display: block;
+}
+
+.lang-menu button {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  color: #000;
+  padding: 5px 10px;
+  font-family: 'Oswald', sans-serif;
+  text-align: left;
+  cursor: pointer;
+}
+
+.lang-menu button:hover {
+  background: #FCD20B;
+  color: #000;
+}
+
 @media (max-width: 768px) {
-  .nav-wrapper {
-    display: none;
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-actions {
+    flex-direction: column;
+    align-items: flex-start;
     width: 100%;
   }
-  .nav-wrapper.active {
-    display: block;
-    background-color: #000;
-  }
+
   .nav-list {
     flex-direction: column;
-    padding: 10px 0;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-top: 20px;
   }
-  .nav-list li {
-    margin: 10px 0;
-    text-align: center;
-  }
-  .menu-toggle {
-    display: block;
+
+  .nav-wrapper {
+    width: 100%;
   }
 }
