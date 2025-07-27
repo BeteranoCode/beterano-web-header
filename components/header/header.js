@@ -1,31 +1,30 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const langBtn = document.getElementById('lang-btn');
-  const langMenu = document.getElementById('lang-menu');
-  if (langBtn && langMenu) {
-    langBtn.addEventListener('click', () => {
-      langMenu.classList.toggle('show');
-    });
-  }
-});
-
-// header/hamburger.js
 document.addEventListener("DOMContentLoaded", () => {
-  const toggle = document.getElementById("menu-toggle");
-  const nav = document.querySelector(".nav-wrapper");
+  const menuToggle = document.getElementById("menu-toggle");
+  const navWrapper = document.querySelector(".nav-wrapper");
   const langBtn = document.getElementById("lang-btn");
   const langMenu = document.getElementById("lang-menu");
 
-  toggle?.addEventListener("click", () => {
-    nav.classList.toggle("show");
-  });
+  // Toggle menú hamburguesa
+  if (menuToggle && navWrapper) {
+    menuToggle.addEventListener("click", () => {
+      navWrapper.classList.toggle("show");
+    });
+  }
 
-  langBtn?.addEventListener("click", () => {
-    langMenu.classList.toggle("show");
-  });
+  // Mostrar menú de idiomas
+  if (langBtn && langMenu) {
+    langBtn.addEventListener("click", () => {
+      langMenu.classList.toggle("show");
+    });
 
-  document.addEventListener("click", (e) => {
-    if (!langBtn.contains(e.target) && !langMenu.contains(e.target)) {
-      langMenu.classList.remove("show");
-    }
-  });
+    // Cambio de idioma (solo placeholder)
+    langMenu.querySelectorAll("button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const lang = btn.dataset.lang;
+        console.log("Idioma seleccionado:", lang);
+        // Aquí puedes integrar i18n.js o cambiar textos dinámicamente si deseas
+        langMenu.classList.remove("show");
+      });
+    });
+  }
 });

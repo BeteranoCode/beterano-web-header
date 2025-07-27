@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&display=swap');
 
+/* =============== ESTILOS GENERALES =============== */
 #site-header {
   font-family: 'Oswald', sans-serif;
   background: #fff;
@@ -16,16 +17,12 @@
   margin: 0 auto;
 }
 
-.logo-wrapper .logo {
+/* =============== LOGO =============== */
+.logo-link .logo {
   height: 48px;
 }
 
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
+/* =============== MENÚ NAVEGACIÓN DESKTOP =============== */
 .nav-wrapper {
   display: flex;
 }
@@ -42,25 +39,24 @@
 .nav-list a {
   color: #000;
   text-decoration: none;
-  transition: color 0.3s;
   font-size: 1rem;
+  transition: color 0.3s;
 }
 
 .nav-list a:hover {
   color: #FCD20B;
 }
 
-/* Icono de idioma en todas las resoluciones */
-#lang-btn img {
-  width: 24px;
-  height: 24px;
-  max-width: 100%;
-  max-height: 100%;
-  display: block;
-  object-fit: contain;
+/* =============== BOTÓN HAMBURGUESA =============== */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
 }
 
-/* Posicionamiento del selector */
+/* =============== SELECTOR DE IDIOMA =============== */
 .lang-selector {
   margin-left: auto;
   position: relative;
@@ -73,12 +69,19 @@
   padding: 0;
 }
 
-/* Menú desplegable de idiomas */
+#lang-btn img {
+  width: 24px;
+  height: 24px;
+  display: block;
+  object-fit: contain;
+}
+
+/* Menú desplegable de idioma */
 .lang-menu {
   display: none;
   position: absolute;
-  right: 0;
   top: 32px;
+  right: 0;
   background: #fff;
   border: 1px solid #000;
   z-index: 10;
@@ -89,44 +92,47 @@
 }
 
 .lang-menu button {
-  display: block;
   width: 100%;
   background: none;
   border: none;
-  color: #000;
   padding: 5px 10px;
   font-family: 'Oswald', sans-serif;
   text-align: left;
   cursor: pointer;
-}
-
-.lang-menu button:hover {
-  background: #FCD20B;
   color: #000;
 }
 
-/* Responsive para móvil */
+.lang-menu button:hover {
+  background-color: #FCD20B;
+}
+
+/* =============== RESPONSIVE MOBILE =============== */
 @media (max-width: 768px) {
   .header-container {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .nav-actions {
+  .hamburger {
+    display: block;
+    margin-left: auto;
+  }
+
+  .nav-wrapper {
+    display: none;
     flex-direction: column;
-    align-items: flex-start;
     width: 100%;
+  }
+
+  .nav-wrapper.show {
+    display: flex;
   }
 
   .nav-list {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
-    margin-top: 20px;
-  }
-
-  .nav-wrapper {
-    width: 100%;
+    margin-top: 1rem;
   }
 
   .lang-selector {
@@ -137,16 +143,5 @@
   #lang-btn img {
     width: 20px;
     height: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .nav-wrapper {
-    display: none;
-    width: 100%;
-  }
-
-  .nav-wrapper.show {
-    display: block;
   }
 }
