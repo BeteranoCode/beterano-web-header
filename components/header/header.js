@@ -1,5 +1,14 @@
-// header/hamburger.js
+document.addEventListener('DOMContentLoaded', () => {
+  const langBtn = document.getElementById('lang-btn');
+  const langMenu = document.getElementById('lang-menu');
+  if (langBtn && langMenu) {
+    langBtn.addEventListener('click', () => {
+      langMenu.classList.toggle('show');
+    });
+  }
+});
 
+// header/hamburger.js
 document.addEventListener("DOMContentLoaded", () => {
   const toggle = document.getElementById("menu-toggle");
   const nav = document.querySelector(".nav-wrapper");
