@@ -139,3 +139,14 @@
     height: 20px;
   }
 }
+
+@media (max-width: 768px) {
+  .nav-wrapper {
+    display: none;
+    width: 100%;
+  }
+
+  .nav-wrapper.show {
+    display: block;
+  }
+}
