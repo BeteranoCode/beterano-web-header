@@ -22,7 +22,7 @@
     // 3. JS funcionalidad
     const script = document.createElement('script');
     script.src = `${baseUrl}/header.js?v=${version}`;
-    script.defer = true;
+    script.onload = () => console.log("Header JS cargado y ejecutado");
     document.body.appendChild(script);
   } catch (e) {
     console.error("Error cargando header:", e);
