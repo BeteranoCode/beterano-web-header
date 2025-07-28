@@ -17,6 +17,13 @@
   margin: 0 auto;
 }
 
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
 /* =============== LOGO =============== */
 .logo-link {
   display: flex;
