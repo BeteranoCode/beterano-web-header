@@ -54,4 +54,14 @@
       closeIcon.style.display = "none";
     }
   });
+
+  // Botones visibles de idioma en móvil
+  document.querySelectorAll(".lang-options-mobile button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const lang = btn.dataset.lang;
+      console.log("Idioma seleccionado (móvil):", lang);
+      // Aquí podrías agregar tu lógica de i18n
+    });
+});
+
 })();

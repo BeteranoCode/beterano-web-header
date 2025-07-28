@@ -205,3 +205,34 @@
     height: 20px;
   }
 }
+
+/* =============== SELECTOR DE IDIOMA VISIBLE EN MÓVIL =============== */
+.lang-options-mobile {
+  display: none;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.lang-options-mobile button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.lang-options-mobile img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Mostrar solo en móvil */
+@media (max-width: 768px) {
+  .lang-selector {
+    display: none; /* Oculta el menú desplegable */
+  }
+
+  .lang-options-mobile {
+    display: flex;
+  }
+}
