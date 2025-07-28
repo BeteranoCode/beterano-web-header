@@ -10,7 +10,7 @@
     const html = await fetch(`${baseUrl}/header.html?v=${version}`).then(res => res.text());
     container.innerHTML = html;
 
-    // 2. Insertar CSS
+    // 2. Insertar CSS solo una vez
     if (!document.querySelector('[data-global-header-style]')) {
       const link = document.createElement('link');
       link.rel = 'stylesheet';
@@ -19,10 +19,10 @@
       document.head.appendChild(link);
     }
 
-    // 3. JS funcionalidad
+    // 3. Ejecutar JS cuando el HTML ya está insertado
     const script = document.createElement('script');
     script.src = `${baseUrl}/header.js?v=${version}`;
-    script.onload = () => console.log("Header JS cargado y ejecutado");
+    script.onload = () => console.log('✅ header.js cargado y ejecutado correctamente');
     document.body.appendChild(script);
   } catch (e) {
     console.error("Error cargando header:", e);
