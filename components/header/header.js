@@ -1,27 +1,28 @@
-(function waitForHeaderElements() {
+document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.getElementById("menu-toggle");
   const navWrapper = document.querySelector(".nav-wrapper");
-
-  // ⚠️ Si aún no se han insertado los elementos, esperar
-  if (!menuToggle || !navWrapper) {
-    setTimeout(waitForHeaderElements, 50); // Intenta otra vez en 50ms
-    return;
-  }
-
   const langBtn = document.getElementById("lang-btn");
   const langMenu = document.getElementById("lang-menu");
   const hamburgerIcon = document.querySelector(".hamburger-icon");
   const closeIcon = document.querySelector(".close-icon");
 
-  // ✅ Lógica del botón hamburguesa
-  menuToggle.addEventListener("click", () => {
-    const isVisible = navWrapper.classList.toggle("show");
+  // Toggle menú hamburguesa
+  if (menuToggle && navWrapper) {
+    menuToggle.addEventListener("click", () => {
+      const isVisible = navWrapper.classList.toggle("show");
 
-    hamburgerIcon.style.display = isVisible ? "none" : "inline";
-    closeIcon.style.display = isVisible ? "inline" : "none";
-  });
+      // Alternar iconos ☰ ↔ ✕ 
+      if (isVisible) {
+        hamburgerIcon.style.display = "none";
+        closeIcon.style.display = "inline";
+      } else {
+        hamburgerIcon.style.display = "inline";
+        closeIcon.style.display = "none";
+      }
+    });
+  }
 
-  // ✅ Cerrar menú al hacer clic en un enlace
+  // Cerrar hamburguesa al hacer clic en un enlace
   document.querySelectorAll(".nav-list a").forEach((link) => {
     link.addEventListener("click", () => {
       navWrapper.classList.remove("show");
@@ -30,7 +31,7 @@
     });
   });
 
-  // ✅ Menú de idiomas
+  // Toggle menú de idioma
   if (langBtn && langMenu) {
     langBtn.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -46,7 +47,7 @@
     });
   }
 
-  // ✅ Cierre general al hacer clic fuera
+  // Cerrar todo al hacer clic fuera
   document.addEventListener("click", (e) => {
     if (!langBtn.contains(e.target) && !langMenu.contains(e.target)) {
       langMenu.classList.remove("show");
@@ -58,6 +59,4 @@
       closeIcon.style.display = "none";
     }
   });
-
-  console.log("✅ header.js ejecutado con éxito");
-})();
+});
