@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+(function initHeader() {
   const menuToggle = document.getElementById("menu-toggle");
   const navWrapper = document.querySelector(".nav-wrapper");
   const langBtn = document.getElementById("lang-btn");
@@ -12,13 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const isVisible = navWrapper.classList.toggle("show");
 
       // Alternar iconos ☰ ↔ ✕ 
-      if (isVisible) {
-        hamburgerIcon.style.display = "none";
-        closeIcon.style.display = "inline";
-      } else {
-        hamburgerIcon.style.display = "inline";
-        closeIcon.style.display = "none";
-      }
+      hamburgerIcon.style.display = isVisible ? "none" : "inline";
+      closeIcon.style.display = isVisible ? "inline" : "none";
     });
   }
 
@@ -59,4 +54,4 @@ document.addEventListener("DOMContentLoaded", () => {
       closeIcon.style.display = "none";
     }
   });
-});
+})();
