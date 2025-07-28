@@ -18,8 +18,23 @@
 }
 
 /* =============== LOGO =============== */
-.logo-link .logo {
+.logo-link {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.logo {
   height: 48px;
+  padding: 0;
+  margin-left: 0;
+}
+
+.logo-wrapper {
+  margin: 0;
+  padding: 0;
+  display: flex;
 }
 
 /* =============== MENÚ NAVEGACIÓN DESKTOP =============== */
@@ -50,9 +65,9 @@
 /* =============== BOTÓN HAMBURGUESA =============== */
 .hamburger {
   display: none;
+  font-size: 2rem;
   background: none;
   border: none;
-  font-size: 2rem;
   cursor: pointer;
 }
 
@@ -108,20 +123,39 @@
 
 /* =============== RESPONSIVE MOBILE =============== */
 @media (max-width: 768px) {
+  #site-header {
+    padding: 16px 20px;
+  }
+
   .header-container {
     flex-direction: column;
     align-items: flex-start;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .logo {
+    margin-left: 0;
   }
 
   .hamburger {
     display: block;
-    margin-left: auto;
+    align-self: flex-end;
+    margin: 0;
   }
 
   .nav-wrapper {
     display: none;
     flex-direction: column;
-    width: 100%;
+    position: fixed;
+    top: 64px; /* altura del header */
+    left: 0;
+    width: 100vw;
+    background: #fff;
+    border-top: 1px solid #eee;
+    z-index: 9999;
+    padding-bottom: 1rem;
   }
 
   .nav-wrapper.show {
@@ -133,11 +167,23 @@
     align-items: flex-start;
     gap: 1rem;
     margin-top: 1rem;
+    padding: 0 1rem;
+  }
+
+  .nav-list li {
+    width: 100%;
+    border-bottom: 1px solid #eee;
+  }
+
+  .nav-list li a {
+    display: block;
+    padding: 10px 0;
+    width: 100%;
   }
 
   .lang-selector {
     align-self: flex-end;
-    margin-top: 10px;
+    margin: 10px 1rem 0 0;
   }
 
   #lang-btn img {
