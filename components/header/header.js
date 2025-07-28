@@ -1,23 +1,27 @@
-(function initHeader() {
+(function waitForHeaderElements() {
   const menuToggle = document.getElementById("menu-toggle");
   const navWrapper = document.querySelector(".nav-wrapper");
+
+  // ⚠️ Si aún no se han insertado los elementos, esperar
+  if (!menuToggle || !navWrapper) {
+    setTimeout(waitForHeaderElements, 50); // Intenta otra vez en 50ms
+    return;
+  }
+
   const langBtn = document.getElementById("lang-btn");
   const langMenu = document.getElementById("lang-menu");
   const hamburgerIcon = document.querySelector(".hamburger-icon");
   const closeIcon = document.querySelector(".close-icon");
 
-  // Toggle menú hamburguesa
-  if (menuToggle && navWrapper) {
-    menuToggle.addEventListener("click", () => {
-      const isVisible = navWrapper.classList.toggle("show");
+  // ✅ Lógica del botón hamburguesa
+  menuToggle.addEventListener("click", () => {
+    const isVisible = navWrapper.classList.toggle("show");
 
-      // Alternar iconos ☰ ↔ ✕ 
-      hamburgerIcon.style.display = isVisible ? "none" : "inline";
-      closeIcon.style.display = isVisible ? "inline" : "none";
-    });
-  }
+    hamburgerIcon.style.display = isVisible ? "none" : "inline";
+    closeIcon.style.display = isVisible ? "inline" : "none";
+  });
 
-  // Cerrar hamburguesa al hacer clic en un enlace
+  // ✅ Cerrar menú al hacer clic en un enlace
   document.querySelectorAll(".nav-list a").forEach((link) => {
     link.addEventListener("click", () => {
       navWrapper.classList.remove("show");
@@ -26,7 +30,7 @@
     });
   });
 
-  // Toggle menú de idioma
+  // ✅ Menú de idiomas
   if (langBtn && langMenu) {
     langBtn.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -42,7 +46,7 @@
     });
   }
 
-  // Cerrar todo al hacer clic fuera
+  // ✅ Cierre general al hacer clic fuera
   document.addEventListener("click", (e) => {
     if (!langBtn.contains(e.target) && !langMenu.contains(e.target)) {
       langMenu.classList.remove("show");
@@ -54,4 +58,6 @@
       closeIcon.style.display = "none";
     }
   });
+
+  console.log("✅ header.js ejecutado con éxito");
 })();
