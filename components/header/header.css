@@ -78,6 +78,13 @@
   cursor: pointer;
 }
 
+.hamburger-icon,
+.close-icon {
+  font-size: 2rem;
+  line-height: 1;
+  display: inline;
+}
+
 /* =============== SELECTOR DE IDIOMA =============== */
 .lang-selector {
   margin-left: auto;
