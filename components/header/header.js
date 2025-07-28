@@ -3,21 +3,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const navWrapper = document.querySelector(".nav-wrapper");
   const langBtn = document.getElementById("lang-btn");
   const langMenu = document.getElementById("lang-menu");
-  const iconHamburger = document.querySelector(".hamburger-icon");
-  const iconClose = document.querySelector(".close-icon");
+  const hamburgerIcon = document.querySelector(".hamburger-icon");
+  const closeIcon = document.querySelector(".close-icon");
 
   // Toggle menú hamburguesa
   if (menuToggle && navWrapper) {
     menuToggle.addEventListener("click", () => {
-      const isOpen = navWrapper.classList.toggle("show");
+      const isVisible = navWrapper.classList.toggle("show");
 
-      // Alternar íconos ☰ ↔ ✕
-      if (isOpen) {
-        iconHamburger.style.display = "none";
-        iconClose.style.display = "inline";
+      // Alternar iconos ☰ ↔ ✕ 
+      if (isVisible) {
+        hamburgerIcon.style.display = "none";
+        closeIcon.style.display = "inline";
       } else {
-        iconHamburger.style.display = "inline";
-        iconClose.style.display = "none";
+        hamburgerIcon.style.display = "inline";
+        closeIcon.style.display = "none";
       }
     });
   }
@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".nav-list a").forEach((link) => {
     link.addEventListener("click", () => {
       navWrapper.classList.remove("show");
-      iconHamburger.style.display = "inline";
-      iconClose.style.display = "none";
+      hamburgerIcon.style.display = "inline";
+      closeIcon.style.display = "none";
     });
   });
 
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Cierre global al hacer clic fuera de nav o menú de idiomas
+  // Cerrar todo al hacer clic fuera
   document.addEventListener("click", (e) => {
     if (!langBtn.contains(e.target) && !langMenu.contains(e.target)) {
       langMenu.classList.remove("show");
@@ -55,8 +55,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!navWrapper.contains(e.target) && !menuToggle.contains(e.target)) {
       navWrapper.classList.remove("show");
-      iconHamburger.style.display = "inline";
-      iconClose.style.display = "none";
+      hamburgerIcon.style.display = "inline";
+      closeIcon.style.display = "none";
     }
   });
 });
