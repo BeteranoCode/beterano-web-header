@@ -1,46 +1,63 @@
-<header id="site-header"> 
-  <div class="header-container">
-    
-    <!-- Línea superior con logo + hamburguesa -->
-    <div class="header-top">
-      <a href="/index.html" class="logo-link">
-        <img src="https://beteranocode.github.io/assets/logo_header.svg" alt="BETERANO" class="logo" />
-      </a>
+<!-- header.html -->
+<div id="announcement-bar">
+  <span>AB 150 CHF KOSTENLOSE LIEFERUNG | SCHWEIZER LAGER 🇨🇭</span>
+  <div class="announcement-links desktop-only">
+    <a href="#">FAQ</a>
+    <a href="#">Kontakt</a>
+    <select id="lang-desktop">
+      <option value="es">Español</option>
+      <option value="de">Deutsch</option>
+      <option value="fr">Français</option>
+      <option value="en">English</option>
+    </select>
+  </div>
+</div>
 
-      <button id="menu-toggle" class="hamburger" aria-label="Menú">
-        <span class="hamburger-icon">☰</span>
-        <span class="close-icon" style="display: none;">✕</span>
-      </button>
+<header id="site-header">
+  <div class="header-container">
+
+    <!-- Botón hamburguesa -->
+    <button id="menu-toggle" class="hamburger" aria-label="Menü">
+      <span class="hamburger-icon">☰</span>
+      <span class="close-icon" style="display: none;">✕</span>
+    </button>
+
+    <!-- Logo al centro -->
+    <a href="/index.html" class="logo-link">
+      <img src="https://beteranocode.github.io/assets/logo_header.svg" alt="BETERANO" class="logo" />
+    </a>
+
+    <!-- Iconos acceso rápido -->
+    <div class="header-icons">
+      <a href="#" class="icon-search" aria-label="Buscar">🔍</a>
+      <a href="#" class="icon-cart" aria-label="Carrito">🛒</a>
     </div>
 
-    <!-- Menú de navegación -->
-    <nav class="nav-wrapper">
-      <ul class="nav-list">
-        <li><a href="/index.html" data-i18n="home">Inicio</a></li>
-        <li><a href="#" data-i18n="clubWA">Club Whatsapp</a></li>
-        <li><a href="#" data-i18n="market">Market</a></li>
-        <li><a href="#" data-i18n="mechAI">Mech AI</a></li>
-        <li><a href="#" data-i18n="findRestorer">Encuentra un restaurador</a></li>
-        <li><a href="#" data-i18n="apps">Apps</a></li>
-        <li><a href="#" data-i18n="shop">Shop</a></li>
-        <li class="lang-selector">
-          <button id="lang-btn" aria-label="Idioma">
-            <img src="https://beteranocode.github.io/assets/lang-icon.svg" alt="Idioma" />
-          </button>
-          <div id="lang-menu" class="lang-menu">
-            <button data-lang="es">ES</button>
-            <button data-lang="en">EN</button>
-            <button data-lang="de">DE</button>
-          </div>
-        </li>
-      </ul>
-    </nav>
   </div>
 
-  <!-- Opciones de idioma visibles solo en móvil -->
-  <div class="lang-options-mobile">
-    <button data-lang="es"><img src="https://beteranocode.github.io/assets/flag_es.svg" alt="ES" /></button>
-    <button data-lang="en"><img src="https://beteranocode.github.io/assets/flag_en.svg" alt="EN" /></button>
-    <button data-lang="de"><img src="https://beteranocode.github.io/assets/flag_de.svg" alt="DE" /></button>
-  </div>
+  <!-- Menú hamburguesa -->
+  <nav class="nav-wrapper">
+    <ul class="nav-list">
+      <li><a href="/index.html" data-i18n="home">Inicio</a></li>
+      <li><a href="#" data-i18n="clubWA">Club Whatsapp</a></li>
+      <li><a href="#" data-i18n="market">Market</a></li>
+      <li><a href="#" data-i18n="mechAI">Mech AI</a></li>
+      <li><a href="#" data-i18n="findRestorer">Encuentra un restaurador</a></li>
+      <li><a href="#" data-i18n="apps">Apps</a></li>
+      <li><a href="#" data-i18n="shop">Shop</a></li>
+    </ul>
+
+    <!-- Extras solo en móvil -->
+    <div class="nav-extras-mobile">
+      <a href="#">FAQ</a>
+      <a href="#">Kontakt</a>
+      <a href="#">Einloggen</a>
+      <div class="lang-options-mobile">
+        <button data-lang="es">ES</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="fr">FR</button>
+        <button data-lang="en">EN</button>
+      </div>
+    </div>
+  </nav>
 </header>
