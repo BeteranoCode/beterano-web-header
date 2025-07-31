@@ -7,14 +7,15 @@ function initHeader() {
   const closeIcon = document.querySelector(".close-icon");
   const langSelect = document.getElementById("lang-desktop");
 
-  // === Función para cambiar el idioma ===
+  // === Función para cambiar el idioma global ===
   function setLanguage(lang) {
-    localStorage.setItem("beteranoLang", lang);
-    applyTranslations(lang);
-    if (langSelect) langSelect.value = lang;
+    localStorage.setItem("beteranoLang", lang);             // Guardar en localStorage
+    document.documentElement.setAttribute("lang", lang);    // Actualizar <html lang="...">
+    applyTranslations(lang);                                // Aplicar traducciones al DOM
+    if (langSelect) langSelect.value = lang;                // Actualizar selector si está visible
   }
 
-  // === Función para aplicar traducciones desde window.translations ===
+  // === Función para aplicar traducciones en todos los elementos con data-i18n ===
   function applyTranslations(lang) {
     const strings = window.translations?.[lang] || {};
     document.querySelectorAll("[data-i18n]").forEach((el) => {
@@ -25,7 +26,11 @@ function initHeader() {
     });
   }
 
-  // === Toggle menú hamburguesa ===
+  // === Exponer funciones globalmente para que otros proyectos (beterano-map, etc.) puedan usarlas ===
+  window.setLanguage = setLanguage;
+  window.applyTranslations = applyTranslations;
+
+  // === Toggle del menú hamburguesa
   if (menuToggle && navWrapper) {
     menuToggle.addEventListener("click", () => {
       const isVisible = navWrapper.classList.toggle("show");
@@ -34,7 +39,7 @@ function initHeader() {
     });
   }
 
-  // === Cerrar menú al hacer clic en un enlace ===
+  // === Cerrar el menú al hacer clic en un enlace del nav principal
   document.querySelectorAll(".nav-list a").forEach((link) => {
     link.addEventListener("click", () => {
       navWrapper.classList.remove("show");
@@ -43,14 +48,14 @@ function initHeader() {
     });
   });
 
-  // === Idioma desde menú desplegable desktop ===
+  // === Selección de idioma desde el selector <select> en desktop
   if (langSelect) {
     langSelect.addEventListener("change", (e) => {
       setLanguage(e.target.value);
     });
   }
 
-  // === Idioma desde menú hamburguesa móvil ===
+  // === Selección de idioma desde los botones del menú hamburguesa (mobile)
   document.querySelectorAll(".lang-options-mobile button").forEach((btn) => {
     btn.addEventListener("click", () => {
       const lang = btn.dataset.lang;
@@ -61,7 +66,7 @@ function initHeader() {
     });
   });
 
-  // === Menú de idioma lateral hamburguesa ===
+  // === Selector visual lateral (botón con icono) solo si está presente
   if (langBtn && langMenu) {
     langBtn.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -76,7 +81,7 @@ function initHeader() {
     });
   }
 
-  // === Cerrar menús al hacer clic fuera ===
+  // === Cerrar menús si se hace clic fuera del nav o selector
   document.addEventListener("click", (e) => {
     if (!langBtn?.contains(e.target) && !langMenu?.contains(e.target)) {
       langMenu?.classList.remove("show");
@@ -88,11 +93,10 @@ function initHeader() {
     }
   });
 
-  // === Cargar idioma guardado al iniciar después del renderizado completo
+  // === Aplicar idioma guardado al cargar (tras la inserción dinámica del header)
   const savedLang = localStorage.getItem("beteranoLang") || "es";
-  applyTranslations(savedLang);
-  if (langSelect) langSelect.value = savedLang;
+  setLanguage(savedLang); // usa setLanguage para aplicar traducción y actualizar <html lang="">
 }
 
-// ✅ Ejecutar solo después de que todo el DOM (incluido el header cargado dinámicamente) esté listo
+// ✅ Ejecutar después de que el DOM esté completamente listo (incluido el header inyectado por header-loader.js)
 window.addEventListener("DOMContentLoaded", initHeader);
