@@ -1,4 +1,4 @@
-(function initHeader() {
+function initHeader() {
   const menuToggle = document.getElementById("menu-toggle");
   const navWrapper = document.querySelector(".nav-wrapper");
   const langBtn = document.getElementById("lang-btn");
@@ -24,11 +24,6 @@
       }
     });
   }
-
-  // === Cargar idioma guardado al iniciar ===
-  const savedLang = localStorage.getItem("beteranoLang") || "es";
-  applyTranslations(savedLang);
-  if (langSelect) langSelect.value = savedLang;
 
   // === Toggle menú hamburguesa ===
   if (menuToggle && navWrapper) {
@@ -92,4 +87,12 @@
       closeIcon.style.display = "none";
     }
   });
-})();
+
+  // === Cargar idioma guardado al iniciar después del renderizado completo
+  const savedLang = localStorage.getItem("beteranoLang") || "es";
+  applyTranslations(savedLang);
+  if (langSelect) langSelect.value = savedLang;
+}
+
+// ✅ Ejecutar solo después de que todo el DOM (incluido el header cargado dinámicamente) esté listo
+window.addEventListener("DOMContentLoaded", initHeader);

@@ -6,11 +6,11 @@
   const version = '1.0.0';
 
   try {
-    // 1. Insertar HTML
+    // 1. Insertar HTML del header
     const html = await fetch(`${baseUrl}/header.html?v=${version}`).then(res => res.text());
     container.innerHTML = html;
 
-    // 2. Insertar CSS solo una vez
+    // 2. Cargar estilos solo una vez
     if (!document.querySelector('[data-global-header-style]')) {
       const link = document.createElement('link');
       link.rel = 'stylesheet';
@@ -19,16 +19,16 @@
       document.head.appendChild(link);
     }
 
-    // Cargar lang.js antes que header.js
+    // 3. Cargar lang.js y luego header.js
     const langScript = document.createElement('script');
     langScript.src = `${baseUrl}/lang.js?v=${version}`;
+    langScript.onload = () => {
+      const script = document.createElement('script');
+      script.src = `${baseUrl}/header.js?v=${version}`;
+      document.body.appendChild(script);
+    };
     document.head.appendChild(langScript);
 
-    // 3. Ejecutar JS cuando el HTML ya está insertado
-    const script = document.createElement('script');
-    script.src = `${baseUrl}/header.js?v=${version}`;
-    script.onload = () => console.log('✅ header.js cargado y ejecutado correctamente');
-    document.body.appendChild(script);
   } catch (e) {
     console.error("Error cargando header:", e);
   }
