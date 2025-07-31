@@ -19,6 +19,11 @@
       document.head.appendChild(link);
     }
 
+    // Cargar lang.js antes que header.js
+    const langScript = document.createElement('script');
+    langScript.src = `${baseUrl}/lang.js?v=${version}`;
+    document.head.appendChild(langScript);
+
     // 3. Ejecutar JS cuando el HTML ya está insertado
     const script = document.createElement('script');
     script.src = `${baseUrl}/header.js?v=${version}`;

@@ -7,7 +7,30 @@
   const closeIcon = document.querySelector(".close-icon");
   const langSelect = document.getElementById("lang-desktop");
 
-  // Toggle menú hamburguesa
+  // === Función para cambiar el idioma ===
+  function setLanguage(lang) {
+    localStorage.setItem("beteranoLang", lang);
+    applyTranslations(lang);
+    if (langSelect) langSelect.value = lang;
+  }
+
+  // === Función para aplicar traducciones desde window.translations ===
+  function applyTranslations(lang) {
+    const strings = window.translations?.[lang] || {};
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const key = el.dataset.i18n;
+      if (strings[key]) {
+        el.textContent = strings[key];
+      }
+    });
+  }
+
+  // === Cargar idioma guardado al iniciar ===
+  const savedLang = localStorage.getItem("beteranoLang") || "es";
+  applyTranslations(savedLang);
+  if (langSelect) langSelect.value = savedLang;
+
+  // === Toggle menú hamburguesa ===
   if (menuToggle && navWrapper) {
     menuToggle.addEventListener("click", () => {
       const isVisible = navWrapper.classList.toggle("show");
@@ -16,7 +39,7 @@
     });
   }
 
-  // Cerrar hamburguesa al hacer clic en un enlace
+  // === Cerrar menú al hacer clic en un enlace ===
   document.querySelectorAll(".nav-list a").forEach((link) => {
     link.addEventListener("click", () => {
       navWrapper.classList.remove("show");
@@ -25,7 +48,25 @@
     });
   });
 
-  // Toggle menú de idioma hamburguesa (si existe)
+  // === Idioma desde menú desplegable desktop ===
+  if (langSelect) {
+    langSelect.addEventListener("change", (e) => {
+      setLanguage(e.target.value);
+    });
+  }
+
+  // === Idioma desde menú hamburguesa móvil ===
+  document.querySelectorAll(".lang-options-mobile button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const lang = btn.dataset.lang;
+      setLanguage(lang);
+      navWrapper.classList.remove("show");
+      hamburgerIcon.style.display = "inline";
+      closeIcon.style.display = "none";
+    });
+  });
+
+  // === Menú de idioma lateral hamburguesa ===
   if (langBtn && langMenu) {
     langBtn.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -34,42 +75,21 @@
 
     langMenu.querySelectorAll("button").forEach((btn) => {
       btn.addEventListener("click", () => {
-        const lang = btn.dataset.lang;
-        console.log("Idioma seleccionado:", lang);
+        setLanguage(btn.dataset.lang);
         langMenu.classList.remove("show");
-        // Aquí lógica de cambio de idioma si usas i18n
       });
     });
   }
 
-  // Cerrar menú si haces clic fuera
+  // === Cerrar menús al hacer clic fuera ===
   document.addEventListener("click", (e) => {
     if (!langBtn?.contains(e.target) && !langMenu?.contains(e.target)) {
       langMenu?.classList.remove("show");
     }
-
     if (!navWrapper.contains(e.target) && !menuToggle.contains(e.target)) {
       navWrapper.classList.remove("show");
       hamburgerIcon.style.display = "inline";
       closeIcon.style.display = "none";
     }
-  });
-
-  // Cambio de idioma desde menú desplegable en desktop
-  if (langSelect) {
-    langSelect.addEventListener("change", (e) => {
-      const lang = e.target.value;
-      console.log("Idioma cambiado desde desktop:", lang);
-      // Aquí lógica de cambio de idioma
-    });
-  }
-
-  // Botones visibles de idioma en móvil
-  document.querySelectorAll(".lang-options-mobile button").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const lang = btn.dataset.lang;
-      console.log("Idioma seleccionado (móvil):", lang);
-      // Aquí lógica de cambio de idioma
-    });
   });
 })();
