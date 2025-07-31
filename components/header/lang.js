@@ -7,6 +7,9 @@ window.translations = {
     findRestorer: "Encuentra un restaurador",
     apps: "Apps",
     shop: "Tienda",
+    faq: "FAQ",
+    contact: "Contacto",
+    login: "Iniciar sesión"
   },
   en: {
     home: "Home",
@@ -16,6 +19,9 @@ window.translations = {
     findRestorer: "Find a Restorer",
     apps: "Apps",
     shop: "Shop",
+    faq: "FAQ",
+    contact: "Contact",
+    login: "Login"
   },
   de: {
     home: "Startseite",
@@ -25,6 +31,9 @@ window.translations = {
     findRestorer: "Restaurator finden",
     apps: "Apps",
     shop: "Shop",
+    faq: "FAQ",
+    contact: "Kontakt",
+    login: "Einloggen"
   },
   fr: {
     home: "Accueil",
@@ -34,5 +43,8 @@ window.translations = {
     findRestorer: "Trouver un restaurateur",
     apps: "Apps",
     shop: "Boutique",
-  },
+    faq: "FAQ",
+    contact: "Contact",
+    login: "Connexion"
+  }
 };
