@@ -93,8 +93,16 @@ function initHeader() {
     }
   });
 
-  // === Aplicar idioma guardado al cargar (tras la inserción dinámica del header)
-  const savedLang = localStorage.getItem("beteranoLang") || "es";
+  // === Obtener idioma preferido: localStorage o navegador
+  let savedLang = localStorage.getItem("beteranoLang");
+
+  if (!savedLang) {
+    const browserLang = navigator.language.slice(0, 2); // ej: 'es-ES' → 'es'
+    const supportedLangs = ['es', 'en', 'de', 'fr'];
+    savedLang = supportedLangs.includes(browserLang) ? browserLang : 'es';
+  }
+
+  // === Aplicar idioma al cargar
   setLanguage(savedLang); // usa setLanguage para aplicar traducción y actualizar <html lang="">
 }
 
