@@ -1,5 +1,6 @@
 window.translations = {
   es: {
+    constructionNotice: "🚧 Web en construcción",
     home: "Inicio",
     clubWA: "Club Whatsapp",
     market: "Market",
@@ -12,6 +13,7 @@ window.translations = {
     login: "Iniciar sesión"
   },
   en: {
+    constructionNotice: "🚧 Website in construction",
     home: "Home",
     clubWA: "WhatsApp Club",
     market: "Marketplace",
@@ -24,6 +26,7 @@ window.translations = {
     login: "Login"
   },
   de: {
+    constructionNotice: "🚧 Website im Aufbau",
     home: "Startseite",
     clubWA: "WhatsApp Club",
     market: "Marktplatz",
@@ -36,6 +39,7 @@ window.translations = {
     login: "Einloggen"
   },
   fr: {
+    constructionNotice: "🚧 Site en construction",
     home: "Accueil",
     clubWA: "Club WhatsApp",
     market: "Marché",
