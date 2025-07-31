@@ -59,7 +59,7 @@
   flex-direction: column;
   background: white;
   position: fixed;
-  top: 60px;
+  top: 92px; /* <-- antes era 60px */
   left: 0;
   width: 100%;
   z-index: 9999;
