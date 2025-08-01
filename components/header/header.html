@@ -1,53 +1,53 @@
-<!-- header.html -->
-<div id="announcement-bar">
-  <span data-i18n="constructionNotice">🚧 Website in construction</span>
-  <div class="announcement-links desktop-only">
-    <a href="#" data-i18n="faq">FAQ</a>
-    <a href="#" data-i18n="contact">Kontakt</a>
-    <select id="lang-desktop">
-      <option value="es">Español</option>
-      <option value="de">Deutsch</option>
-      <option value="fr">Français</option>
-      <option value="en">English</option>
-    </select>
-  </div>
-</div>
-
 <header id="site-header">
   <div class="header-container">
+
+    <!-- IZQUIERDA: nav con submenús -->
+    <nav class="nav-wrapper desktop-nav">
+      <ul class="nav-list">
+        <!-- Club Whatsapp + submenu -->
+        <li class="has-submenu">
+          <a href="#" data-i18n="clubWA">Club Whatsapp</a>
+          <ul class="submenu">
+            <li><a href="#" data-i18n="market">Market</a></li>
+          </ul>
+        </li>
+
+        <!-- Apps + submenu -->
+        <li class="has-submenu">
+          <a href="#" data-i18n="apps">Apps</a>
+          <ul class="submenu">
+            <li><a href="#" data-i18n="mechAI">Mech AI</a></li>
+            <li><a href="#" data-i18n="findRestorer">Encuentra un restaurador</a></li>
+          </ul>
+        </li>
+
+        <!-- Shop normal -->
+        <li><a href="#" data-i18n="shop">Shop</a></li>
+      </ul>
+    </nav>
+
+    <!-- CENTRO: logo -->
+    <a href="/index.html" class="logo-link">
+      <img src="https://beteranocode.github.io/assets/logo_header.svg" alt="BETERANO" class="logo" />
+    </a>
+
+    <!-- DERECHA: acciones -->
+    <div class="header-actions desktop-only">
+      <a href="#" data-i18n="faq">FAQ</a>
+      <a href="#" data-i18n="contact">Kontakt</a>
+      <select id="lang-desktop">
+        <option value="es">Español</option>
+        <option value="de">Deutsch</option>
+        <option value="fr">Français</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+
     <!-- Botón hamburguesa (solo móvil) -->
     <button id="menu-toggle" class="hamburger" aria-label="Menú">
       <span class="hamburger-icon">☰</span>
       <span class="close-icon" style="display: none;">✕</span>
     </button>
 
-    <!-- Menú nav-list: se muestra centrado en desktop -->
-    <nav class="nav-wrapper">
-      <ul class="nav-list">
-        <li><a href="/index.html" data-i18n="home">Inicio</a></li>
-        <li><a href="#" data-i18n="clubWA">Club Whatsapp</a></li>
-        <li><a href="#" data-i18n="market">Market</a></li>
-        <li><a href="#" data-i18n="mechAI">Mech AI</a></li>
-        <li><a href="#" data-i18n="findRestorer">Encuentra un restaurador</a></li>
-        <li><a href="#" data-i18n="apps">Apps</a></li>
-        <li><a href="#" data-i18n="shop">Shop</a></li>
-      </ul>
-
-      <!-- Enlaces adicionales solo visibles en móvil -->
-      <div class="nav-extras-mobile">
-        <a href="#" data-i18n="faq">FAQ</a>
-        <a href="#" data-i18n="contact">Kontakt</a>
-        <a href="#" data-i18n="login">Einloggen</a>
-        <div class="lang-options-mobile">
-          <button data-lang="es">ES</button>
-          <button data-lang="de">DE</button>
-          <button data-lang="fr">FR</button>
-          <button data-lang="en">EN</button>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Logo al centro (desktop y móvil) -->
-    <a href="/index.html" class="logo-link">
-      <img src="https://beteranocode.github.io/assets/logo_header.svg" alt="BETERANO" class="logo" />
-    </a
+  </div>
+</header>
