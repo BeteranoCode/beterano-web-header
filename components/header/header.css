@@ -15,6 +15,7 @@ body {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  z-index: 200;
 }
 
 .announcement-links a {
@@ -49,7 +50,7 @@ body {
   z-index: 100;
 }
 
-/* Nueva estructura con grid para mejor distribución */
+/* Estructura con grid */
 .header-container {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -69,7 +70,7 @@ body {
   max-width: 180px;
 }
 
-/* Botón hamburguesa (solo móvil) */
+/* Botón hamburguesa */
 .hamburger {
   background: none;
   border: none;
@@ -86,7 +87,7 @@ body {
   font-size: 1.8rem;
 }
 
-/* Navegación MOBILE (oculta por defecto) */
+/* Navegación móvil */
 .nav-wrapper {
   display: none;
   width: 100%;
@@ -103,7 +104,6 @@ body {
   display: block;
 }
 
-/* Lista nav MOBILE */
 .nav-list {
   list-style: none;
   padding: 0;
@@ -124,7 +124,7 @@ body {
   font-weight: 500;
 }
 
-/* Enlaces móviles extra */
+/* Enlaces extra en móvil */
 .nav-extras-mobile {
   display: flex;
   flex-direction: column;
@@ -153,7 +153,7 @@ body {
   border-radius: 4px;
 }
 
-/* SUBMENÚ DESKTOP */
+/* Submenús */
 .has-submenu {
   position: relative;
 }
@@ -193,7 +193,7 @@ body {
   display: block;
 }
 
-/* Acciones a la derecha en desktop */
+/* Acciones en escritorio */
 .header-actions {
   justify-self: end;
   display: none;
