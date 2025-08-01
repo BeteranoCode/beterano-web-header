@@ -128,6 +128,12 @@
   cursor: pointer;
 }
 
+/* =================== BETERANO MAP: ocultar íconos desktop =================== */
+body.map-page .header-icons .icon-search,
+body.map-page .header-icons .icon-cart {
+  display: none !important;
+}
+
 /* =================== Desktop Overrides =================== */
 @media (min-width: 769px) {
   /* Ocultar hamburguesa en desktop */
