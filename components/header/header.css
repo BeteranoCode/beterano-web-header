@@ -55,12 +55,21 @@
   cursor: pointer;
 }
 
-/* Iconos de búsqueda y carrito a la derecha */
+/* Iconos de búsqueda, carrito y login (desktop) */
 .header-icons {
   display: flex;
   gap: 1rem;
   font-size: 1.2rem;
+  align-items: center;
 }
+
+.header-icons .icon-login {
+  color: #000;
+  text-decoration: none;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+}
+
 
 /* =================== Menú responsive (hamburguesa) =================== */
 .nav-wrapper {
