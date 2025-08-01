@@ -1,191 +1,186 @@
-/* =================== Announcement Bar =================== */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Oswald', sans-serif;
+}
+
+/* Barra superior */
 #announcement-bar {
-  background: #333;
+  background-color: #000;
   color: #fff;
-  font-size: 0.8rem;
-  padding: 6px 20px;
+  padding: 4px 12px;
+  font-size: 0.9rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Oswald', sans-serif;
-}
-
-#announcement-bar a {
-  color: #fff;
-  margin-left: 1rem;
-  text-decoration: none;
-  font-weight: 400;
-}
-
-#announcement-bar select {
-  margin-left: 1rem;
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-family: 'Oswald', sans-serif;
-}
-
-/* =================== Header Layout =================== */
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  position: relative;
   flex-wrap: wrap;
 }
 
+.announcement-links a {
+  color: #fff;
+  margin-left: 12px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.announcement-links select {
+  margin-left: 12px;
+  padding: 2px 6px;
+}
+
+.desktop-only {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .desktop-only {
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* Header principal */
+#site-header {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  padding: 12px 20px;
+  position: relative;
+  z-index: 100;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+/* Logo */
 .logo-link {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.logo {
-  height: 48px;
-  width: auto;
   display: block;
+  margin: 0 auto;
+  text-align: center;
 }
 
-/* Botón hamburguesa visible solo en móvil */
+.logo-link img.logo {
+  height: 40px;
+  max-width: 180px;
+}
+
+/* Botón hamburguesa */
 .hamburger {
   background: none;
   border: none;
-  font-size: 2rem;
+  font-size: 1.6rem;
   cursor: pointer;
+  position: absolute;
+  left: 20px;
+  top: 16px;
+  z-index: 101;
 }
 
-/* Iconos de búsqueda, carrito y login (desktop) */
-.header-icons {
-  display: flex;
-  gap: 1rem;
-  font-size: 1.2rem;
-  align-items: center;
+.hamburger-icon,
+.close-icon {
+  font-size: 1.8rem;
 }
 
-.header-icons .icon-login {
-  color: #000;
-  text-decoration: none;
-  font-family: 'Oswald', sans-serif;
-  font-size: 1rem;
-}
-
-/* =================== Menú responsive (hamburguesa móvil) =================== */
+/* Menú navegación general */
 .nav-wrapper {
   display: none;
-  flex-direction: column;
-  background: white;
-  position: fixed;
-  top: 92px;
-  left: 0;
   width: 100%;
-  z-index: 9999;
-  padding-bottom: 1rem;
+  background: #fff;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  z-index: 99;
   border-top: 1px solid #ccc;
+  padding-bottom: 16px;
 }
 
 .nav-wrapper.show {
-  display: flex;
+  display: block;
 }
 
+/* Lista de navegación */
 .nav-list {
   list-style: none;
+  padding: 0;
+  margin: 16px 0 0 0;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
-  gap: 0.5rem;
+  align-items: center;
+}
+
+.nav-list li {
+  margin: 10px 0;
 }
 
 .nav-list a {
   text-decoration: none;
   color: #000;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
-/* Extra enlaces en el menú hamburguesa (solo móvil) */
+/* Enlaces móviles extra */
 .nav-extras-mobile {
-  padding: 1rem;
-  border-top: 1px solid #eee;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  align-items: center;
+  margin-top: 16px;
 }
 
 .nav-extras-mobile a {
+  color: #444;
+  margin: 6px 0;
+  font-size: 1rem;
   text-decoration: none;
-  color: #000;
-  font-size: 0.95rem;
+}
+
+.lang-options-mobile {
+  margin-top: 10px;
 }
 
 .lang-options-mobile button {
-  background: none;
-  border: none;
-  color: #000;
-  font-size: 1rem;
-  margin-right: 0.5rem;
+  margin: 4px;
+  padding: 4px 10px;
+  font-weight: 500;
+  background: #eee;
+  border: 1px solid #ccc;
   cursor: pointer;
+  border-radius: 4px;
 }
 
-/* =================== BETERANO MAP: ocultar íconos desktop =================== */
-body.map-page .header-icons .icon-search,
-body.map-page .header-icons .icon-cart {
-  display: none !important;
-}
-
-/* =================== Desktop Overrides =================== */
+/* Escritorio */
 @media (min-width: 769px) {
   .hamburger {
     display: none;
   }
 
-  .logo-link {
-    position: static;
-    transform: none;
-    order: 2;
-  }
-
-  .header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-
-  /* ✅ Mostrar nav-wrapper como parte del header */
   .nav-wrapper {
-    display: flex;
-    flex-direction: row;
+    display: flex !important;
+    position: static;
+    width: auto;
+    background: none;
+    border: none;
+    padding: 0;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    order: 1;
   }
 
   .nav-list {
-    display: flex;
     flex-direction: row;
-    gap: 2rem;
-    padding: 0;
-    margin: 0 auto;
+    margin: 0;
   }
 
-  .header-icons {
-    order: 3;
+  .nav-list li {
+    margin: 0 12px;
   }
 
-  .nav-extras-mobile {
-    display: none;
-  }
-
-  .desktop-only {
-    display: flex;
-    align-items: center;
-  }
-}
-
-/* =================== Mobile Overrides =================== */
-@media (max-width: 768px) {
-  .desktop-only {
+  .nav-extras-mobile,
+  .lang-options-mobile {
     display: none;
   }
 
@@ -193,9 +188,6 @@ body.map-page .header-icons .icon-cart {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-  }
-
-  .logo {
-    height: 40px;
+    top: 12px;
   }
 }
