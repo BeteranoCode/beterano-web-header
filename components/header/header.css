@@ -193,19 +193,6 @@ body {
   display: block;
 }
 
-/* Acciones en escritorio */
-.header-actions {
-  justify-self: end;
-  display: none;
-  gap: 12px;
-  align-items: center;
-}
-
-@media (min-width: 769px) {
-  .hamburger {
-    display: none;
-  }
-
   .nav-wrapper {
     display: flex !important;
     position: static;
