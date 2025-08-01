@@ -152,6 +152,16 @@ body.map-page .header-icons .icon-cart {
   }
 
   /* 👇 nav-list integrado dentro del header */
+  .nav-wrapper {
+    position: static;
+    background: none;
+    border: none;
+    padding: 0;
+    display: block !important;
+    width: auto;
+    z-index: auto;
+  }
+
   .nav-list {
     display: flex;
     flex-direction: row;
@@ -164,10 +174,6 @@ body.map-page .header-icons .icon-cart {
 
   .header-icons {
     order: 3;
-  }
-
-  .nav-wrapper {
-    display: none !important;
   }
 
   .nav-extras-mobile {
