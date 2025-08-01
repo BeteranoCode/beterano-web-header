@@ -32,9 +32,9 @@
   align-items: center;
   padding: 10px 20px;
   position: relative;
+  flex-wrap: wrap;
 }
 
-/* Logo: se mostrará centrado en mobile y a la izquierda en desktop */
 .logo-link {
   position: absolute;
   left: 50%;
@@ -70,14 +70,13 @@
   font-size: 1rem;
 }
 
-
 /* =================== Menú responsive (hamburguesa) =================== */
 .nav-wrapper {
   display: none;
   flex-direction: column;
   background: white;
   position: fixed;
-  top: 92px; /* Ajustado para dejar espacio al announcement + header */
+  top: 92px;
   left: 0;
   width: 100%;
   z-index: 9999;
@@ -118,7 +117,6 @@
   font-size: 0.95rem;
 }
 
-/* Selector de idioma visible en menú hamburguesa */
 .lang-options-mobile button {
   background: none;
   border: none;
@@ -136,44 +134,46 @@ body.map-page .header-icons .icon-cart {
 
 /* =================== Desktop Overrides =================== */
 @media (min-width: 769px) {
-  /* Ocultar hamburguesa en desktop */
   .hamburger {
     display: none;
   }
 
-  /* Logo se coloca a la izquierda en desktop */
   .logo-link {
     position: static;
     transform: none;
+    order: 2;
   }
 
-  /* Distribución del contenedor del header */
   .header-container {
+    display: flex;
+    align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
   }
 
-  /* Mostrar menú de navegación en desktop */
+  /* 👇 INTEGRAR NAV LIST DENTRO DEL HEADER */
   .nav-wrapper {
-    display: flex !important;
-    position: static;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    padding: 0;
+    display: contents !important; /* Hace que sus hijos se comporten como si fueran parte del DOM padre */
   }
 
   .nav-list {
+    display: flex;
     flex-direction: row;
     gap: 2rem;
+    order: 1;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
   }
 
-  /* Ocultar elementos extra del menú hamburguesa */
+  .header-icons {
+    order: 3;
+  }
+
   .nav-extras-mobile {
     display: none;
   }
 
-  /* Mostrar enlaces del announcement solo en desktop */
   .desktop-only {
     display: flex;
     align-items: center;
@@ -182,12 +182,10 @@ body.map-page .header-icons .icon-cart {
 
 /* =================== Mobile Overrides =================== */
 @media (max-width: 768px) {
-  /* Ocultar elementos solo para desktop */
   .desktop-only {
     display: none;
   }
 
-  /* Centrar logo sobre el header */
   .logo-link {
     position: absolute;
     left: 50%;
