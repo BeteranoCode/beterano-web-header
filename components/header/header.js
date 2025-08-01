@@ -1,4 +1,7 @@
 function initHeader() {
+  // === Detectar si estamos en beterano-map ===
+  const isMap = window.location.href.includes("beterano-map");
+
   // === Referencias a elementos del DOM ===
   const menuToggle = document.getElementById("menu-toggle");
   const navWrapper = document.querySelector(".nav-wrapper");
@@ -9,18 +12,14 @@ function initHeader() {
   const langSelect = document.getElementById("lang-desktop");
   const searchIcon = document.querySelector(".icon-search");
   const cartIcon = document.querySelector(".icon-cart");
+  const loginIcon = document.querySelector(".icon-login");
 
-  // === Detectar si estamos en beterano-map ===
-  const isMap = window.location.href.includes("beterano-map");
-
-  // Si estamos en beterano-map, ocultar iconos innecesarios
+  // === Si estamos en beterano-map, ocultar íconos innecesarios (solo en desktop)
   if (isMap) {
     if (searchIcon) searchIcon.style.display = "none";
     if (cartIcon) cartIcon.style.display = "none";
-    // loginIcon permanece visible en beterano-map
+    // loginIcon permanece visible
   }
-
-
 
   // === Cambio de idioma global ===
   function setLanguage(lang) {
@@ -30,7 +29,7 @@ function initHeader() {
     if (langSelect) langSelect.value = lang;                 // Sincronizar selector desktop
   }
 
-  // === Aplicar traducciones según los data-i18n
+  // === Aplicar traducciones a los elementos con data-i18n
   function applyTranslations(lang) {
     const strings = window.translations?.[lang] || {};
     document.querySelectorAll("[data-i18n]").forEach((el) => {
@@ -41,7 +40,7 @@ function initHeader() {
     });
   }
 
-  // === Exponer funciones globales
+  // === Exponer funciones globales para acceso externo
   window.setLanguage = setLanguage;
   window.applyTranslations = applyTranslations;
 
@@ -54,7 +53,7 @@ function initHeader() {
     });
   }
 
-  // === Cerrar menú hamburguesa al hacer clic en una opción
+  // === Cerrar menú hamburguesa al hacer clic en cualquier enlace
   document.querySelectorAll(".nav-list a, .nav-extras-mobile a").forEach((link) => {
     link.addEventListener("click", () => {
       navWrapper.classList.remove("show");
@@ -70,7 +69,7 @@ function initHeader() {
     });
   }
 
-  // === Cambio de idioma desde botones móviles
+  // === Cambio de idioma desde botones del menú móvil
   document.querySelectorAll(".lang-options-mobile button").forEach((btn) => {
     btn.addEventListener("click", () => {
       const lang = btn.dataset.lang;
@@ -81,7 +80,7 @@ function initHeader() {
     });
   });
 
-  // === Menú flotante de idiomas desde globo/botón
+  // === Mostrar menú flotante de idiomas desde el botón/globo
   if (langBtn && langMenu) {
     langBtn.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -96,7 +95,7 @@ function initHeader() {
     });
   }
 
-  // === Cerrar menús flotantes al hacer clic fuera
+  // === Cerrar menús al hacer clic fuera
   document.addEventListener("click", (e) => {
     if (!langBtn?.contains(e.target) && !langMenu?.contains(e.target)) {
       langMenu?.classList.remove("show");
@@ -108,10 +107,9 @@ function initHeader() {
     }
   });
 
-  // === Aplicar idioma guardado al cargar
+  // === Aplicar idioma guardado al cargar (esperando que lang.js ya esté disponible)
   const savedLang = localStorage.getItem("beteranoLang") || "es";
 
-  // Espera hasta que lang.js haya definido window.translations
   const interval = setInterval(() => {
     if (typeof window.translations === "object") {
       setLanguage(savedLang);
@@ -119,9 +117,9 @@ function initHeader() {
     }
   }, 100);
 
-  // Seguridad: forzar cancelación del intervalo en 5 segundos
+  // Seguridad: forzar cancelación del intervalo después de 5 segundos
   setTimeout(() => clearInterval(interval), 5000);
 }
 
-// === Ejecutar al cargar el DOM (tras header-loader.js) ===
+// === Ejecutar cuando el DOM esté completamente cargado ===
 window.addEventListener("DOMContentLoaded", initHeader);
