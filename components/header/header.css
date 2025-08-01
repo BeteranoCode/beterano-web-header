@@ -70,7 +70,7 @@
   font-size: 1rem;
 }
 
-/* =================== Menú responsive (hamburguesa) =================== */
+/* =================== Menú responsive (hamburguesa móvil) =================== */
 .nav-wrapper {
   display: none;
   flex-direction: column;
@@ -151,25 +151,22 @@ body.map-page .header-icons .icon-cart {
     flex-wrap: wrap;
   }
 
-  /* 👇 nav-list integrado dentro del header */
+  /* ✅ Mostrar nav-wrapper como parte del header */
   .nav-wrapper {
-    position: static;
-    background: none;
-    border: none;
-    padding: 0;
-    display: block !important;
-    width: auto;
-    z-index: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    order: 1;
   }
 
   .nav-list {
     display: flex;
     flex-direction: row;
     gap: 2rem;
-    order: 1;
-    margin-left: auto;
-    margin-right: auto;
     padding: 0;
+    margin: 0 auto;
   }
 
   .header-icons {
