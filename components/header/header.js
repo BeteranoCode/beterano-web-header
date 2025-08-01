@@ -14,11 +14,10 @@ function initHeader() {
   const isMap = window.location.href.includes("beterano-map");
 
   // Si estamos en beterano-map, ocultar iconos innecesarios
-  const loginIcon = document.querySelector(".icon-login");
   if (isMap) {
     if (searchIcon) searchIcon.style.display = "none";
     if (cartIcon) cartIcon.style.display = "none";
-    // loginIcon permanece visible
+    // loginIcon permanece visible en beterano-map
   }
 
 
