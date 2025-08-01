@@ -39,6 +39,11 @@ body {
     display: inline-flex;
     align-items: center;
   }
+
+  /* Ocultar hamburguesa en escritorio */
+  .hamburger {
+    display: none !important;
+  }
 }
 
 /* Header principal */
@@ -193,6 +198,8 @@ body {
   display: block;
 }
 
+/* Vista de escritorio */
+@media (min-width: 769px) {
   .nav-wrapper {
     display: flex !important;
     position: static;
@@ -218,9 +225,5 @@ body {
   .nav-extras-mobile,
   .lang-options-mobile {
     display: none;
-  }
-
-  .header-actions {
-    display: flex;
   }
 }
