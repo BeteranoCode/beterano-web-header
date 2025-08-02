@@ -17,18 +17,26 @@
 <header id="site-header">
   <div class="header-container">
 
-    <!-- IZQUIERDA: nav con submenús -->
+    <!-- Botón hamburguesa (solo móvil) -->
+    <button id="menu-toggle" class="hamburger" aria-label="Menú">
+      <span class="hamburger-icon">☰</span>
+      <span class="close-icon" style="display: none;">✕</span>
+    </button>
+
+    <!-- Logo izquierda -->
+    <a href="/index.html" class="logo-link">
+      <img src="https://beteranocode.github.io/assets/logo_header.svg" alt="BETERANO" class="logo" />
+    </a>
+
+    <!-- Menú centrado (solo desktop) -->
     <nav class="nav-wrapper desktop-nav">
       <ul class="nav-list">
-        <!-- Club Whatsapp + submenu -->
         <li class="has-submenu">
           <a href="#" data-i18n="clubWA">Club Whatsapp</a>
           <ul class="submenu">
             <li><a href="#" data-i18n="market">Market</a></li>
           </ul>
         </li>
-
-        <!-- Apps + submenu -->
         <li class="has-submenu">
           <a href="#" data-i18n="apps">Apps</a>
           <ul class="submenu">
@@ -36,22 +44,16 @@
             <li><a href="#" data-i18n="findRestorer">Encuentra un restaurador</a></li>
           </ul>
         </li>
-
-        <!-- Shop normal -->
         <li><a href="#" data-i18n="shop">Shop</a></li>
       </ul>
     </nav>
 
-    <!-- CENTRO: logo -->
-    <a href="/index.html" class="logo-link">
-      <img src="https://beteranocode.github.io/assets/logo_header.svg" alt="BETERANO" class="logo" />
-    </a>
-
-    <!-- Botón hamburguesa (solo móvil) -->
-    <button id="menu-toggle" class="hamburger" aria-label="Menú">
-      <span class="hamburger-icon">☰</span>
-      <span class="close-icon" style="display: none;">✕</span>
-    </button>
+    <!-- Iconos derecha (ej: login) -->
+    <div class="header-icons desktop-only">
+      <a href="#" aria-label="Login">
+        <img src="https://beteranocode.github.io/assets/icon-login.svg" alt="Login" class="icon" />
+      </a>
+    </div>
 
   </div>
 </header>

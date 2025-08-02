@@ -40,7 +40,6 @@ body {
     align-items: center;
   }
 
-  /* Ocultar hamburguesa en escritorio */
   .hamburger {
     display: none !important;
   }
@@ -55,18 +54,20 @@ body {
   z-index: 100;
 }
 
-/* Estructura con grid */
+/* Estructura GRID */
 .header-container {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas:
+    "hamburger logo icons";
   align-items: center;
-  position: relative;
   width: 100%;
+  position: relative;
 }
 
-/* Logo centrado */
+/* Logo */
 .logo-link {
-  justify-self: center;
+  grid-area: logo;
   text-align: center;
 }
 
@@ -75,15 +76,30 @@ body {
   max-width: 180px;
 }
 
-/* Botón hamburguesa */
+/* Menú centrado solo en desktop */
+.nav-wrapper {
+  grid-area: nav;
+  display: none;
+}
+
+/* Iconos derechos */
+.header-icons {
+  grid-area: icons;
+  display: none;
+}
+
+.header-icons img.icon {
+  height: 24px;
+  margin-left: 12px;
+}
+
+/* Hamburguesa solo en móvil */
 .hamburger {
+  grid-area: hamburger;
   background: none;
   border: none;
   font-size: 1.6rem;
   cursor: pointer;
-  position: absolute;
-  left: 20px;
-  top: 16px;
   z-index: 101;
 }
 
@@ -92,7 +108,7 @@ body {
   font-size: 1.8rem;
 }
 
-/* Navegación móvil */
+/* Menú desplegable móvil */
 .nav-wrapper {
   display: none;
   width: 100%;
@@ -109,6 +125,7 @@ body {
   display: block;
 }
 
+/* Menú UL base */
 .nav-list {
   list-style: none;
   padding: 0;
@@ -127,35 +144,6 @@ body {
   color: #000;
   font-size: 1.2rem;
   font-weight: 500;
-}
-
-/* Enlaces extra en móvil */
-.nav-extras-mobile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 16px;
-}
-
-.nav-extras-mobile a {
-  color: #444;
-  margin: 6px 0;
-  font-size: 1rem;
-  text-decoration: none;
-}
-
-.lang-options-mobile {
-  margin-top: 10px;
-}
-
-.lang-options-mobile button {
-  margin: 4px;
-  padding: 4px 10px;
-  font-weight: 500;
-  background: #eee;
-  border: 1px solid #ccc;
-  cursor: pointer;
-  border-radius: 4px;
 }
 
 /* Submenús */
@@ -198,17 +186,23 @@ body {
   display: block;
 }
 
-/* Vista de escritorio */
+/* Escritorio */
 @media (min-width: 769px) {
+  .header-container {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      "logo nav icons";
+  }
+
+  .logo-link {
+    justify-self: start;
+    text-align: left;
+  }
+
   .nav-wrapper {
     display: flex !important;
-    position: static;
-    width: auto;
-    background: none;
-    border: none;
-    padding: 0;
+    justify-content: center;
     align-items: center;
-    justify-content: start;
   }
 
   .nav-list {
@@ -222,8 +216,8 @@ body {
     position: relative;
   }
 
-  .nav-extras-mobile,
-  .lang-options-mobile {
-    display: none;
+  .header-icons {
+    display: flex;
+    justify-content: flex-end;
   }
 }
