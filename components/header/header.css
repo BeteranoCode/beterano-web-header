@@ -80,6 +80,20 @@ body {
 .nav-wrapper {
   grid-area: nav;
   display: none;
+  flex-direction: column;
+  background: #fff;
+  width: 100%;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  z-index: 999;
+  border-top: 1px solid #ccc;
+  padding-bottom: 16px;
+}
+
+/* Activar al hacer click */
+.nav-wrapper.open {
+  display: flex;
 }
 
 /* Iconos derechos */
@@ -106,23 +120,6 @@ body {
 .hamburger-icon,
 .close-icon {
   font-size: 1.8rem;
-}
-
-/* Menú desplegable móvil */
-.nav-wrapper {
-  display: none;
-  width: 100%;
-  background: #fff;
-  position: absolute;
-  top: 60px;
-  left: 0;
-  z-index: 99;
-  border-top: 1px solid #ccc;
-  padding-bottom: 16px;
-}
-
-.nav-wrapper.show {
-  display: block;
 }
 
 /* Menú UL base */
@@ -201,8 +198,12 @@ body {
 
   .nav-wrapper {
     display: flex !important;
-    justify-content: center;
-    align-items: center;
+    position: static;
+    flex-direction: row;
+    background: transparent;
+    width: auto;
+    border: none;
+    padding-bottom: 0;
   }
 
   .nav-list {
