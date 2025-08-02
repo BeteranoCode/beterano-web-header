@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+(function () {
   const toggleButton = document.getElementById("menu-toggle");
   const navWrapper = document.querySelector(".nav-wrapper");
   const hamburgerIcon = toggleButton?.querySelector(".hamburger-icon");
@@ -13,4 +13,4 @@ document.addEventListener("DOMContentLoaded", function () {
       closeIcon.style.display = isOpen ? "inline" : "none";
     }
   });
-});
+})();
