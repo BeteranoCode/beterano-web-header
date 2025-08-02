@@ -19,12 +19,17 @@
       document.head.appendChild(link);
     }
 
-    // 3. Cargar lang.js y luego header.js
+    // 3. Cargar lang.js y luego header.js y hamburger.js
     const langScript = document.createElement('script');
     langScript.src = `${baseUrl}/lang.js?v=${version}`;
     langScript.onload = () => {
       const script = document.createElement('script');
       script.src = `${baseUrl}/header.js?v=${version}`;
+      script.onload = () => {
+        const hamburger = document.createElement('script');
+        hamburger.src = `${baseUrl}/hamburger.js?v=${version}`;
+        document.body.appendChild(hamburger);
+      };
       document.body.appendChild(script);
     };
     document.head.appendChild(langScript);
