@@ -5,9 +5,7 @@ body {
   font-family: 'Oswald', sans-serif;
 }
 
-/* ╔══════════════════════╗ */
-/* ║ 📱 BASE: SMARTPHONE ║ */
-/* ╚══════════════════════╝ */
+/* 📱 BASE: SMARTPHONE */
 
 /* Barra superior */
 #announcement-bar {
@@ -37,6 +35,11 @@ body {
 /* Oculta elementos solo para escritorio */
 .desktop-only {
   display: none;
+}
+
+/* Mostrar solo en móvil */
+.mobile-only {
+  display: block;
 }
 
 /* Header principal */
@@ -89,6 +92,20 @@ body {
 
 .nav-wrapper.open {
   display: flex;
+}
+
+/* Selector de idioma en móvil */
+.mobile-lang-selector {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+}
+
+.mobile-lang-selector select {
+  padding: 6px 12px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
 }
 
 /* Iconos derechos */
@@ -178,13 +195,15 @@ body {
   display: block;
 }
 
-/* ╔═════════════════════════╗ */
-/* ║ 💻 VISTA ESCRITORIO     ║ */
-/* ╚═════════════════════════╝ */
+/* 💻 ESCRITORIO */
 @media (min-width: 769px) {
   .desktop-only {
     display: inline-flex;
     align-items: center;
+  }
+
+  .mobile-only {
+    display: none !important;
   }
 
   .hamburger {
