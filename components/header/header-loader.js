@@ -19,35 +19,41 @@
       document.head.appendChild(link);
     }
 
-    // 3. Cargar lang.js y luego header.js + hamburger.js
+    // 3. Cargar lang.js
     const langScript = document.createElement('script');
     langScript.src = `${baseUrl}/lang.js?v=${version}`;
+
     langScript.onload = () => {
+      // 🔁 Establecer idioma actual desde localStorage o 'es' por defecto
       const lang = localStorage.getItem("beteranoLang") || "es";
       document.documentElement.setAttribute("lang", lang);
-      window.applyTranslations(lang);
+      window.applyTranslations?.(lang); // Traducir elementos
 
+      // 🌐 Sincronizar selectores de idioma
       const desktopLang = document.getElementById("lang-desktop");
       const mobileLang = document.getElementById("lang-mobile");
       if (desktopLang) desktopLang.value = lang;
       if (mobileLang) mobileLang.value = lang;
 
+      // 📲 Escuchar cambios en idioma - escritorio
       desktopLang?.addEventListener("change", (e) => {
-        const lang = e.target.value;
-        localStorage.setItem("beteranoLang", lang);
-        document.documentElement.setAttribute("lang", lang);
-        window.applyTranslations(lang);
-        mobileLang.value = lang;
+        const selected = e.target.value;
+        localStorage.setItem("beteranoLang", selected);
+        document.documentElement.setAttribute("lang", selected);
+        window.applyTranslations?.(selected);
+        if (mobileLang) mobileLang.value = selected;
       });
 
+      // 📱 Escuchar cambios en idioma - móvil
       mobileLang?.addEventListener("change", (e) => {
-        const lang = e.target.value;
-        localStorage.setItem("beteranoLang", lang);
-        document.documentElement.setAttribute("lang", lang);
-        window.applyTranslations(lang);
-        desktopLang.value = lang;
+        const selected = e.target.value;
+        localStorage.setItem("beteranoLang", selected);
+        document.documentElement.setAttribute("lang", selected);
+        window.applyTranslations?.(selected);
+        if (desktopLang) desktopLang.value = selected;
       });
 
+      // 4. Cargar header.js y luego hamburger.js
       const script = document.createElement('script');
       script.src = `${baseUrl}/header.js?v=${version}`;
       script.onload = () => {
@@ -57,6 +63,7 @@
       };
       document.body.appendChild(script);
     };
+
     document.head.appendChild(langScript);
 
   } catch (e) {
