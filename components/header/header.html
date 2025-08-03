@@ -1,4 +1,4 @@
-<!-- Barra de anuncio -->
+<!-- 🔝 Barra superior de anuncio y enlaces (solo en escritorio) -->
 <div id="announcement-bar">
   <span data-i18n="constructionNotice">🚧 Website in construction</span>
   <div class="announcement-links desktop-only">
@@ -13,52 +13,81 @@
   </div>
 </div>
 
-<!-- Header principal -->
+<!-- 🔧 Encabezado principal con logo, hamburguesa y menú -->
 <header id="site-header">
   <div class="header-container">
 
-    <!-- Botón hamburguesa (solo móvil) -->
+    <!-- ☰ Botón hamburguesa (solo visible en móvil) -->
     <button id="menu-toggle" class="hamburger" aria-label="Menú">
       <span class="hamburger-icon">☰</span>
       <span class="close-icon" style="display: none;">✕</span>
     </button>
 
-    <!-- Logo izquierda -->
+    <!-- 🔗 Logo (centrado en móvil, izquierda en escritorio) -->
     <a href="/index.html" class="logo-link">
       <img src="https://beteranocode.github.io/assets/logo_header.svg" alt="BETERANO" class="logo" />
     </a>
 
-    <!-- Menú centrado (solo desktop) -->
-    <nav class="nav-wrapper desktop-nav">
+    <!-- 🧭 Navegación (centrada en escritorio, expandida en móvil) -->
+    <nav class="nav-wrapper">
       <ul class="nav-list">
-        <li class="has-submenu">
+
+        <!-- 🎯 Versión ESCRITORIO: con submenús -->
+        <li class="has-submenu desktop-only">
           <a href="#" data-i18n="clubWA">Club Whatsapp</a>
           <ul class="submenu">
             <li><a href="#" data-i18n="market">Market</a></li>
           </ul>
         </li>
-        <li class="has-submenu">
+
+        <li class="has-submenu desktop-only">
           <a href="#" data-i18n="apps">Apps</a>
           <ul class="submenu">
             <li><a href="#" data-i18n="mechAI">Mech AI</a></li>
             <li><a href="#" data-i18n="findRestorer">Encuentra un restaurador</a></li>
           </ul>
         </li>
-        <li><a href="#" data-i18n="shop">Shop</a></li>
-      </ul>
 
+        <li class="desktop-only">
+          <a href="#" data-i18n="shop">Shop</a>
+        </li>
+
+        <!-- 📱 Versión MÓVIL: menú completo sin submenús -->
+        <li class="mobile-only"><a href="#" data-i18n="clubWA">Club Whatsapp</a></li>
+        <li class="mobile-only"><a href="#" data-i18n="market">Market</a></li>
+        <li class="mobile-only"><a href="#" data-i18n="apps">Apps</a></li>
+        <li class="mobile-only"><a href="#" data-i18n="mechAI">Mech AI</a></li>
+        <li class="mobile-only"><a href="#" data-i18n="findRestorer">Find a Restorer</a></li>
+        <li class="mobile-only"><a href="#" data-i18n="shop">Shop</a></li>
+
+        <!-- Separador -->
+        <li class="mobile-only">
+          <hr style="width: 60%; border: none; border-top: 1px solid #ccc;">
+        </li>
+
+        <!-- 🔐 Login (solo móvil dentro del menú) -->
+        <li class="mobile-only">
+          <a href="#" aria-label="Login">
+            <img src="https://beteranocode.github.io/assets/icon-login.svg" alt="Login" class="icon" />
+          </a>
+        </li>
+
+        <!-- 🌐 Selector de idioma en móvil -->
         <li class="mobile-lang-selector mobile-only">
           <select id="lang-mobile">
             <option value="es">Español</option>
             <option value="de">Deutsch</option>
             <option value="fr">Français</option>
             <option value="en">English</option>
+            <option value="it">Italiano</option>
+            <option value="nl">Nederlands</option>
+            <option value="pl">Polski</option>
           </select>
         </li>
       </ul>
     </nav>
 
-    <!-- Iconos derecha (ej: login) -->
+    <!-- 👤 Iconos a la derecha (ej: login) - solo en escritorio -->
     <div class="header-icons desktop-only">
       <a href="#" aria-label="Login">
         <img src="https://beteranocode.github.io/assets/icon-login.svg" alt="Login" class="icon" />
