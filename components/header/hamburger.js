@@ -1,6 +1,6 @@
 (function () {
   const toggleButton = document.getElementById("menu-toggle");
-  const navWrapper = document.querySelector(".nav-wrapper.desktop-nav");
+  const navWrapper = document.querySelector(".nav-wrapper");
   const hamburgerIcon = toggleButton?.querySelector(".hamburger-icon");
   const closeIcon = toggleButton?.querySelector(".close-icon");
 
