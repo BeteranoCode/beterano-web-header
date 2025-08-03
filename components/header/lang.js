@@ -50,5 +50,44 @@ window.translations = {
     faq: "FAQ",
     contact: "Contact",
     login: "Connexion"
+  },
+  it: {
+    constructionNotice: "🚧 Sito in costruzione 🚧",
+    home: "Home",
+    clubWA: "Club WhatsApp",
+    market: "Mercato",
+    mechAI: "Mech AI",
+    findRestorer: "Trova un restauratore",
+    apps: "App",
+    shop: "Negozio",
+    faq: "FAQ",
+    contact: "Contatto",
+    login: "Accedi"
+  },
+  nl: {
+    constructionNotice: "🚧 Website in aanbouw 🚧",
+    home: "Home",
+    clubWA: "WhatsApp Club",
+    market: "Marktplaats",
+    mechAI: "Mech AI",
+    findRestorer: "Vind een restaurateur",
+    apps: "Apps",
+    shop: "Winkel",
+    faq: "FAQ",
+    contact: "Contact",
+    login: "Inloggen"
+  },
+  pl: {
+    constructionNotice: "🚧 Strona w budowie 🚧",
+    home: "Strona główna",
+    clubWA: "Klub WhatsApp",
+    market: "Rynek",
+    mechAI: "Mech AI",
+    findRestorer: "Znajdź renowatora",
+    apps: "Aplikacje",
+    shop: "Sklep",
+    faq: "FAQ",
+    contact: "Kontakt",
+    login: "Zaloguj się"
   }
 };
