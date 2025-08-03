@@ -27,7 +27,7 @@
       // 🗺️ Detectar idioma desde localStorage o navegador
       let lang = localStorage.getItem("beteranoLang");
       if (!lang) {
-        const browserLang = navigator.language.slice(0, 2); // ej. 'es'
+        const browserLang = navigator.language.slice(0, 2);
         lang = window.translations?.[browserLang] ? browserLang : "en";
         localStorage.setItem("beteranoLang", lang);
       }
@@ -42,11 +42,10 @@
       if (desktopLang) desktopLang.value = lang;
       if (mobileLang) mobileLang.value = lang;
 
-      // 🎛️ Al cambiar idioma → guardar, recargar y aplicar
       const changeLang = (selectedLang) => {
         localStorage.setItem("beteranoLang", selectedLang);
         document.documentElement.setAttribute("lang", selectedLang);
-        location.reload(); // 🔁 Recarga para aplicar traducción a todos los elementos visibles
+        location.reload(); // 🔁 Recarga para aplicar traducción a todos los elementos
       };
 
       desktopLang?.addEventListener("change", (e) => {
@@ -59,18 +58,27 @@
         if (selected !== lang) changeLang(selected);
       });
 
-      // 4️⃣ Cargar JS adicional: header.js + hamburger.js
+      // 4️⃣ Cargar JS: header.js y luego hamburger.js
       const script = document.createElement('script');
       script.src = `${baseUrl}/header.js?v=${version}`;
       script.onload = () => {
         const hamburger = document.createElement('script');
         hamburger.src = `${baseUrl}/hamburger.js?v=${version}`;
         document.body.appendChild(hamburger);
+
+        // ✅ Esperar hasta que header esté completamente visible
+        const waitUntilVisible = () => {
+          const a = document.getElementById("announcement-bar");
+          const h = document.getElementById("site-header");
+          if (a && h && a.offsetHeight > 0 && h.offsetHeight > 0) {
+            window.dispatchEvent(new Event("beteranoHeaderReady"));
+          } else {
+            setTimeout(waitUntilVisible, 50);
+          }
+        };
+        waitUntilVisible();
       };
       document.body.appendChild(script);
-
-      // ✅ Emitir evento personalizado para React (App.jsx)
-      window.dispatchEvent(new Event("beteranoHeaderReady"));
     };
 
     document.head.appendChild(langScript);
