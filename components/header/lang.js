@@ -91,3 +91,12 @@ window.translations = {
     login: "Zaloguj się"
   }
 };
+
+// ✅ FUNCION DE TRADUCCIÓN GLOBAL
+window.applyTranslations = function (lang) {
+  const t = window.translations?.[lang] || {};
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.getAttribute("data-i18n");
+    if (t[key]) el.textContent = t[key];
+  });
+};
