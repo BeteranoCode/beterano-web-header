@@ -1,9 +1,7 @@
 function initHeader() {
-  // === Detectar si estamos en beterano-map ===
   const isMap = window.location.href.includes("beterano-map");
   if (isMap) document.body.classList.add("map-page");
 
-  // === Referencias a elementos del DOM ===
   const menuToggle = document.getElementById("menu-toggle");
   const navWrapper = document.querySelector(".nav-wrapper");
   const langBtn = document.getElementById("lang-btn");
@@ -12,22 +10,19 @@ function initHeader() {
   const closeIcon = document.querySelector(".close-icon");
   const langSelect = document.getElementById("lang-desktop");
 
-  // === Cambio de idioma global ===
+  function applyTranslations(lang) {
+    const strings = window.translations?.[lang] || {};
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const key = el.dataset.i18n;
+      if (strings[key]) el.textContent = strings[key];
+    });
+  }
+
   function setLanguage(lang) {
     localStorage.setItem("beteranoLang", lang);
     document.documentElement.setAttribute("lang", lang);
     applyTranslations(lang);
     if (langSelect) langSelect.value = lang;
-  }
-
-  function applyTranslations(lang) {
-    const strings = window.translations?.[lang] || {};
-    document.querySelectorAll("[data-i18n]").forEach((el) => {
-      const key = el.dataset.i18n;
-      if (strings[key]) {
-        el.textContent = strings[key];
-      }
-    });
   }
 
   window.setLanguage = setLanguage;
