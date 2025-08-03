@@ -19,10 +19,35 @@
       document.head.appendChild(link);
     }
 
-    // 3. Cargar lang.js y luego header.js y hamburger.js
+    // 3. Cargar lang.js y luego header.js + hamburger.js
     const langScript = document.createElement('script');
     langScript.src = `${baseUrl}/lang.js?v=${version}`;
     langScript.onload = () => {
+      const lang = localStorage.getItem("beteranoLang") || "es";
+      document.documentElement.setAttribute("lang", lang);
+      window.applyTranslations(lang);
+
+      const desktopLang = document.getElementById("lang-desktop");
+      const mobileLang = document.getElementById("lang-mobile");
+      if (desktopLang) desktopLang.value = lang;
+      if (mobileLang) mobileLang.value = lang;
+
+      desktopLang?.addEventListener("change", (e) => {
+        const lang = e.target.value;
+        localStorage.setItem("beteranoLang", lang);
+        document.documentElement.setAttribute("lang", lang);
+        window.applyTranslations(lang);
+        mobileLang.value = lang;
+      });
+
+      mobileLang?.addEventListener("change", (e) => {
+        const lang = e.target.value;
+        localStorage.setItem("beteranoLang", lang);
+        document.documentElement.setAttribute("lang", lang);
+        window.applyTranslations(lang);
+        desktopLang.value = lang;
+      });
+
       const script = document.createElement('script');
       script.src = `${baseUrl}/header.js?v=${version}`;
       script.onload = () => {
