@@ -2,7 +2,15 @@
   const container = document.getElementById('header-container');
   if (!container) return;
 
-  const baseUrl = 'https://beteranocode.github.io/components/header';
+  const isLocal = location.hostname === 'localhost';
+
+  if (isLocal) {
+    console.warn("🔧 Modo local detectado. Simulando carga de header para evitar error CORS.");
+    document.dispatchEvent(new Event("beteranoHeaderReady"));
+    return;
+  }
+
+  const baseUrl = 'https://beteranocode.github.io/beterano-web-header/components/header';
   const version = '1.0.0';
 
   try {
