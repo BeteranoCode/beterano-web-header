@@ -216,6 +216,8 @@ body {
     grid-template-columns: auto 1fr auto;
     grid-template-areas:
       "logo nav icons";
+    height: auto;       /* ✅ que coja la altura real de su contenido */
+    min-height: 0;      /* ✅ evitar herencias de alturas mínimas */
   }
 
   .logo-link {
