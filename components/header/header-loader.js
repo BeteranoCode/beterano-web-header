@@ -4,13 +4,12 @@
   if (!container) return;
 
   const isLocal = location.hostname === "localhost";
-  const baseUrl =
-    "https://beteranocode.github.io/beterano-web-header/components/header";
-  const version = "1.0.1"; // sube si quieres forzar cache-bust
+  const baseUrl = "https://beteranocode.github.io/beterano-web-header/components/header";
+  const sharedUrl = "https://beteranocode.github.io/beterano-web-header/components/shared";
+  const version = "1.1.0"; // ⬅️ súbelo para bust de caché cuando cambies algo
 
   // Utilidad: marca la app como lista, ajusta offset y lanza evento SIEMPRE en document
   const markReady = () => {
-    // Si ya existe el announcement y el header, calcula altura real
     const a = document.getElementById("announcement-bar");
     const h = document.getElementById("site-header");
     if (a && h && a.offsetHeight > 0 && h.offsetHeight > 0) {
@@ -21,19 +20,23 @@
     document.dispatchEvent(new Event("beteranoHeaderReady"));
   };
 
+  // Importa el bridge i18n compartido (modo módulo)
+  const { getInitialLang, setGlobalLang } = await import(`${sharedUrl}/i18n-bridge.js?v=${version}`);
+
   if (isLocal) {
     // Modo local: no cargamos remoto; simulamos altura y notificamos
     document.documentElement.style.setProperty("--header-offset", "125px");
     document.body.classList.add("local-dev");
+    // Asegura un idioma inicial coherente en local también
+    const init = getInitialLang();
+    setGlobalLang(init);
     markReady();
     return;
   }
 
   try {
     // 1) Insertar HTML del header
-    const html = await fetch(`${baseUrl}/header.html?v=${version}`).then((r) =>
-      r.text()
-    );
+    const html = await fetch(`${baseUrl}/header.html?v=${version}`).then((r) => r.text());
     container.innerHTML = html;
 
     // 2) Asegurar CSS cargado una sola vez
@@ -50,30 +53,41 @@
     langScript.src = `${baseUrl}/lang.js?v=${version}`;
 
     langScript.onload = () => {
-      // Idioma
-      let lang = localStorage.getItem("beteranoLang");
-      if (!lang) {
-        const browser = navigator.language.slice(0, 2);
-        lang = window.translations?.[browser] ? browser : "en";
-        localStorage.setItem("beteranoLang", lang);
-      }
+      // Lista de idiomas permitidos a partir de window.translations o fallback
+      const allowed = Array.isArray(window?.translations?._allowed)
+        ? window.translations._allowed
+        : Object.keys(window?.translations || { es:1, en:1, de:1, fr:1, it:1, nl:1, pl:1 });
+
+      // Inicializa idioma global (URL > localStorage > cookie > navegador)
+      const initLang = getInitialLang(allowed);
+      const lang = setGlobalLang(initLang); // persist + <html lang> + evento
+
+      // Aplica traducciones al header
       document.documentElement.setAttribute("lang", lang);
       window.applyTranslations?.(lang);
 
-      // Sincronizar selects (si existen)
+      // Sincroniza selects (si existen)
       const desktopLang = document.getElementById("lang-desktop");
-      const mobileLang = document.getElementById("lang-mobile");
+      const mobileLang  = document.getElementById("lang-mobile");
       if (desktopLang) desktopLang.value = lang;
-      if (mobileLang) mobileLang.value = lang;
+      if (mobileLang)  mobileLang.value  = lang;
 
-      const changeLang = (selected) => {
+      // Cambio de idioma desde los selects → actualiza global y re-aplica sin recargar
+      const onChange = (selectedRaw) => {
+        const selected = (selectedRaw || "").slice(0, 2).toLowerCase();
+        if (!allowed.includes(selected)) return;
         if (selected === lang) return;
-        localStorage.setItem("beteranoLang", selected);
-        document.documentElement.setAttribute("lang", selected);
-        location.reload();
+        const applied = setGlobalLang(selected);
+        document.documentElement.setAttribute("lang", applied);
+        window.applyTranslations?.(applied); // ❌ sin reload, ✅ re-render header
+        if (desktopLang) desktopLang.value = applied;
+        if (mobileLang)  mobileLang.value  = applied;
+        // recalcular offset por si cambian textos/altura
+        setTimeout(markReady, 50);
       };
-      desktopLang?.addEventListener("change", (e) => changeLang(e.target.value));
-      mobileLang?.addEventListener("change", (e) => changeLang(e.target.value));
+
+      desktopLang?.addEventListener("change", (e) => onChange(e.target.value));
+      mobileLang?.addEventListener("change", (e) => onChange(e.target.value));
 
       // 4) Cargar JS del header y el hamburger
       const headerJs = document.createElement("script");
@@ -89,10 +103,7 @@
           const h = document.getElementById("site-header");
           if (a && h && a.offsetHeight > 0 && h.offsetHeight > 0) {
             const total = Math.round(a.offsetHeight + h.offsetHeight);
-            document.documentElement.style.setProperty(
-              "--header-offset",
-              `${total}px`
-            );
+            document.documentElement.style.setProperty("--header-offset", `${total}px`);
             markReady();
           } else {
             setTimeout(waitUntilVisible, 60);
@@ -106,7 +117,6 @@
     document.head.appendChild(langScript);
   } catch (e) {
     console.error("❌ Error cargando header:", e);
-    // fallback muy básico
     document.documentElement.style.setProperty("--header-offset", "85px");
     markReady();
   }
