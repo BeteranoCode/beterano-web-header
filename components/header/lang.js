@@ -1,12 +1,9 @@
 window.translations = {
   es: {
     constructionNotice: "🚧 Web en construcción 🚧",
-    home: "Inicio",
-    clubWA: "Club Whatsapp",
-    market: "Market",
-    mechAI: "Mech AI",
-    findRestorer: "Encuentra un restaurador",
-    apps: "Apps",
+    beteranoGo: "Beterano Go!",
+    community: "Comunidad",
+    about: "Quienes somos",
     shop: "Tienda",
     faq: "FAQ",
     contact: "Contacto",
@@ -14,12 +11,9 @@ window.translations = {
   },
   en: {
     constructionNotice: "🚧 Website in construction 🚧",
-    home: "Home",
-    clubWA: "WhatsApp Club",
-    market: "Marketplace",
-    mechAI: "Mech AI",
-    findRestorer: "Find a Restorer",
-    apps: "Apps",
+    beteranoGo: "Beterano Go!",
+    community: "Community",
+    about: "About us",
     shop: "Shop",
     faq: "FAQ",
     contact: "Contact",
@@ -27,12 +21,9 @@ window.translations = {
   },
   de: {
     constructionNotice: "🚧 Website im Aufbau 🚧",
-    home: "Startseite",
-    clubWA: "WhatsApp Club",
-    market: "Marktplatz",
-    mechAI: "Mech AI",
-    findRestorer: "Restaurator finden",
-    apps: "Apps",
+    beteranoGo: "Beterano Go!",
+    community: "Community",
+    about: "Über uns",
     shop: "Shop",
     faq: "FAQ",
     contact: "Kontakt",
@@ -40,12 +31,9 @@ window.translations = {
   },
   fr: {
     constructionNotice: "🚧 Site en construction 🚧",
-    home: "Accueil",
-    clubWA: "Club WhatsApp",
-    market: "Marché",
-    mechAI: "Mech AI",
-    findRestorer: "Trouver un restaurateur",
-    apps: "Apps",
+    beteranoGo: "Beterano Go!",
+    community: "Communauté",
+    about: "Qui sommes-nous",
     shop: "Boutique",
     faq: "FAQ",
     contact: "Contact",
@@ -53,12 +41,9 @@ window.translations = {
   },
   it: {
     constructionNotice: "🚧 Sito in costruzione 🚧",
-    home: "Home",
-    clubWA: "Club WhatsApp",
-    market: "Mercato",
-    mechAI: "Mech AI",
-    findRestorer: "Trova un restauratore",
-    apps: "App",
+    beteranoGo: "Beterano Go!",
+    community: "Comunità",
+    about: "Chi siamo",
     shop: "Negozio",
     faq: "FAQ",
     contact: "Contatto",
@@ -66,12 +51,9 @@ window.translations = {
   },
   nl: {
     constructionNotice: "🚧 Website in aanbouw 🚧",
-    home: "Home",
-    clubWA: "WhatsApp Club",
-    market: "Marktplaats",
-    mechAI: "Mech AI",
-    findRestorer: "Vind een restaurateur",
-    apps: "Apps",
+    beteranoGo: "Beterano Go!",
+    community: "Gemeenschap",
+    about: "Over ons",
     shop: "Winkel",
     faq: "FAQ",
     contact: "Contact",
@@ -79,24 +61,12 @@ window.translations = {
   },
   pl: {
     constructionNotice: "🚧 Strona w budowie 🚧",
-    home: "Strona główna",
-    clubWA: "Klub WhatsApp",
-    market: "Rynek",
-    mechAI: "Mech AI",
-    findRestorer: "Znajdź renowatora",
-    apps: "Aplikacje",
+    beteranoGo: "Beterano Go!",
+    community: "Społeczność",
+    about: "O nas",
     shop: "Sklep",
     faq: "FAQ",
     contact: "Kontakt",
     login: "Zaloguj się"
   }
-};
-
-// ✅ FUNCION DE TRADUCCIÓN GLOBAL
-window.applyTranslations = function (lang) {
-  const t = window.translations?.[lang] || {};
-  document.querySelectorAll("[data-i18n]").forEach((el) => {
-    const key = el.getAttribute("data-i18n");
-    if (t[key]) el.textContent = t[key];
-  });
 };

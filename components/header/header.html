@@ -26,41 +26,24 @@
       <span class="close-icon" style="display: none;">✕</span>
     </button>
 
-    <!-- 🔗 Logo (centrado en móvil, izquierda en escritorio) -->
+    <!-- 🔗 Logo -->
     <a href="/index.html" class="logo-link">
       <img src="https://beteranocode.github.io/assets/logo_header.svg" alt="BETERANO" class="logo" />
     </a>
 
-    <!-- 🧭 Navegación (centrada en escritorio, expandida en móvil) -->
+    <!-- 🧭 Navegación -->
     <nav class="nav-wrapper">
       <ul class="nav-list">
+        <!-- Versión escritorio -->
+        <li class="desktop-only"><a href="#" data-i18n="beteranoGo">Beterano Go!</a></li>
+        <li class="desktop-only"><a href="#" data-i18n="community">Comunidad</a></li>
+        <li class="desktop-only"><a href="#" data-i18n="about">Quienes somos</a></li>
+        <li class="desktop-only"><a href="#" data-i18n="shop">Shop</a></li>
 
-        <!-- 🎯 Versión ESCRITORIO: con submenús -->
-        <li class="has-submenu desktop-only">
-          <a href="#" data-i18n="clubWA">Club Whatsapp</a>
-          <ul class="submenu">
-            <li><a href="#" data-i18n="market">Market</a></li>
-          </ul>
-        </li>
-
-        <li class="has-submenu desktop-only">
-          <a href="#" data-i18n="apps">Apps</a>
-          <ul class="submenu">
-            <li><a href="#" data-i18n="mechAI">Mech AI</a></li>
-            <li><a href="#" data-i18n="findRestorer">Encuentra un restaurador</a></li>
-          </ul>
-        </li>
-
-        <li class="desktop-only">
-          <a href="#" data-i18n="shop">Shop</a>
-        </li>
-
-        <!-- 📱 Versión MÓVIL: menú completo sin submenús -->
-        <li class="mobile-only"><a href="#" data-i18n="clubWA">Club Whatsapp</a></li>
-        <li class="mobile-only"><a href="#" data-i18n="market">Market</a></li>
-        <li class="mobile-only"><a href="#" data-i18n="apps">Apps</a></li>
-        <li class="mobile-only"><a href="#" data-i18n="mechAI">Mech AI</a></li>
-        <li class="mobile-only"><a href="#" data-i18n="findRestorer">Find a Restorer</a></li>
+        <!-- Versión móvil -->
+        <li class="mobile-only"><a href="#" data-i18n="beteranoGo">Beterano Go!</a></li>
+        <li class="mobile-only"><a href="#" data-i18n="community">Comunidad</a></li>
+        <li class="mobile-only"><a href="#" data-i18n="about">Quienes somos</a></li>
         <li class="mobile-only"><a href="#" data-i18n="shop">Shop</a></li>
 
         <!-- Separador -->
@@ -88,8 +71,9 @@
       </ul>
     </nav>
 
-    <!-- 👤 Iconos a la derecha (ej: login) - solo en escritorio -->
+    <!-- 👤 Icono login escritorio -->
     <div class="header-icons desktop-only">
       <a href="#" id="login-link" title="Login" style="font-size: 20px;">👤</a>
+    </div>
   </div>
 </header>
