@@ -73,6 +73,7 @@ body {
 .logo-link img.logo {
   height: 40px;
   max-width: 180px;
+  display: block;
 }
 
 /* Menú hamburguesa (móvil) */
@@ -216,8 +217,8 @@ body {
     grid-template-columns: auto 1fr auto;
     grid-template-areas:
       "logo nav icons";
-    height: auto;       /* ✅ que coja la altura real de su contenido */
-    min-height: 0;      /* ✅ evitar herencias de alturas mínimas */
+    height: auto;
+    min-height: 0;
   }
 
   .logo-link {
