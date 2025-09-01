@@ -5,9 +5,18 @@ body {
   font-family: 'Oswald', sans-serif;
 }
 
-/* 📱 BASE: SMARTPHONE */
+/* 🔧 FIX anti-scroll extra por header inyectado
+   El loader define body[style="--header-offset:..."].
+   Restamos esa altura al área de la app (#root) para que no use 100vh completo.
+*/
+html, body { height: 100%; overflow-x: hidden; }
+:root { --header-offset: 0px; } /* fallback */
+body.header-loaded #root {
+  min-height: calc(100dvh - var(--header-offset, 0px));
+  height: calc(100dvh - var(--header-offset, 0px));
+}
 
-/* Barra superior */
+/* 📱 BASE: SMARTPHONE */
 #announcement-bar {
   background-color: #000;
   color: #fff;
@@ -32,15 +41,8 @@ body {
   padding: 2px 6px;
 }
 
-/* Oculta elementos solo para escritorio */
-.desktop-only {
-  display: none;
-}
-
-/* Mostrar solo en móvil */
-.mobile-only {
-  display: block;
-}
+.desktop-only { display: none; }
+.mobile-only { display: block; }
 
 /* Header principal */
 #site-header {
@@ -56,8 +58,7 @@ body {
 .header-container {
   display: grid;
   grid-template-columns: auto 1fr auto;
-  grid-template-areas:
-    "hamburger logo icons";
+  grid-template-areas: "hamburger logo icons";
   align-items: center;
   width: 100%;
   position: relative;
@@ -65,16 +66,8 @@ body {
 }
 
 /* Logo */
-.logo-link {
-  grid-area: logo;
-  text-align: center;
-}
-
-.logo-link img.logo {
-  height: 40px;
-  max-width: 180px;
-  display: block;
-}
+.logo-link { grid-area: logo; text-align: center; }
+.logo-link img.logo { height: 40px; max-width: 180px; display: block; }
 
 /* Menú hamburguesa (móvil) */
 .nav-wrapper {
@@ -90,173 +83,65 @@ body {
   border-top: 1px solid #ccc;
   padding-bottom: 16px;
 }
-
-.nav-wrapper.open {
-  display: flex;
-}
+.nav-wrapper.open { display: flex; }
 
 /* Selector de idioma en móvil */
-.mobile-lang-selector {
-  margin-top: 12px;
-  display: flex;
-  justify-content: center;
-}
-
+.mobile-lang-selector { margin-top: 12px; display: flex; justify-content: center; }
 .mobile-lang-selector select {
-  padding: 6px 12px;
-  font-size: 1rem;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  width: 80%;
-  margin-top: 8px;
+  padding: 6px 12px; font-size: 1rem; border-radius: 4px; border: 1px solid #ccc; width: 80%; margin-top: 8px;
 }
 
 /* Iconos derechos */
-.header-icons {
-  grid-area: icons;
-  display: none;
-}
-
-.header-icons img.icon {
-  height: 24px;
-  margin-left: 12px;
-}
+.header-icons { grid-area: icons; display: none; }
+.header-icons img.icon { height: 24px; margin-left: 12px; }
 
 /* Botón hamburguesa */
-.hamburger {
-  grid-area: hamburger;
-  background: none;
-  border: none;
-  font-size: 1.6rem;
-  cursor: pointer;
-  z-index: 101;
-}
-
-.hamburger-icon,
-.close-icon {
-  font-size: 1.8rem;
-}
+.hamburger { grid-area: hamburger; background: none; border: none; font-size: 1.6rem; cursor: pointer; z-index: 101; }
+.hamburger-icon, .close-icon { font-size: 1.8rem; }
 
 /* Lista de navegación */
 .nav-list {
-  list-style: none;
-  padding: 0;
-  margin: 16px 0 0 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  list-style: none; padding: 0; margin: 16px 0 0 0;
+  display: flex; flex-direction: column; align-items: center;
 }
-
-.nav-list li {
-  margin: 10px 0;
-}
-
-.nav-list a {
-  text-decoration: none;
-  color: #000;
-  font-size: 1.2rem;
-  font-weight: 500;
-}
+.nav-list li { margin: 10px 0; }
+.nav-list a { text-decoration: none; color: #000; font-size: 1.2rem; font-weight: 500; }
 
 /* Submenús */
-.has-submenu {
-  position: relative;
-}
-
-.has-submenu > a::after {
-  content: " ▼";
-  font-size: 0.7rem;
-  margin-left: 4px;
-}
-
+.has-submenu { position: relative; }
+.has-submenu > a::after { content: " ▼"; font-size: 0.7rem; margin-left: 4px; }
 .submenu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  min-width: 200px;
-  z-index: 10;
-  padding: 6px 0;
+  display: none; position: absolute; top: 100%; left: 0;
+  background: white; border: 1px solid #ddd; border-radius: 4px; min-width: 200px; z-index: 10; padding: 6px 0;
 }
-
-.submenu li {
-  margin: 0;
-}
-
-.submenu a {
-  display: block;
-  padding: 8px 16px;
-  font-size: 0.95rem;
-  color: #000;
-  white-space: nowrap;
-}
-
-.has-submenu:hover .submenu {
-  display: block;
-}
+.submenu li { margin: 0; }
+.submenu a { display: block; padding: 8px 16px; font-size: 0.95rem; color: #000; white-space: nowrap; }
+.has-submenu:hover .submenu { display: block; }
 
 /* 💻 ESCRITORIO */
 @media (min-width: 769px) {
-  .desktop-only {
-    display: inline-flex;
-    align-items: center;
-  }
-
-  .mobile-only {
-    display: none !important;
-  }
-
-  .hamburger {
-    display: none !important;
-  }
+  .desktop-only { display: inline-flex; align-items: center; }
+  .mobile-only { display: none !important; }
+  .hamburger { display: none !important; }
 
   .header-container {
     grid-template-columns: auto 1fr auto;
-    grid-template-areas:
-      "logo nav icons";
-    height: auto;
-    min-height: 0;
+    grid-template-areas: "logo nav icons";
+    height: auto; min-height: 0;
   }
 
-  .logo-link {
-    justify-self: start;
-    text-align: left;
-  }
+  .logo-link { justify-self: start; text-align: left; }
 
   .nav-wrapper {
-    display: flex !important;
-    position: static;
-    flex-direction: row;
-    background: transparent;
-    width: auto;
-    border: none;
-    padding-bottom: 0;
+    display: flex !important; position: static; flex-direction: row;
+    background: transparent; width: auto; border: none; padding-bottom: 0;
   }
 
-  .nav-list {
-    flex-direction: row;
-    margin: 0;
-    align-items: center;
-  }
+  .nav-list { flex-direction: row; margin: 0; align-items: center; }
+  .nav-list li { margin: 0 12px; position: relative; }
 
-  .nav-list li {
-    margin: 0 12px;
-    position: relative;
-  }
-
-  .header-icons {
-    display: flex;
-    justify-content: flex-end;
-  }
+  .header-icons { display: flex; justify-content: flex-end; }
 }
 
-/* 🎉 Emoji login en lugar de icono */
-.login-emoji {
-  font-size: 1.5rem;
-  text-decoration: none;
-  margin-left: 10px;
-  color: #000;
-}
+/* 🎉 Emoji login */
+.login-emoji { font-size: 1.5rem; text-decoration: none; margin-left: 10px; color: #000; }
