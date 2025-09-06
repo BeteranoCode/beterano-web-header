@@ -16,49 +16,33 @@
   </div>
 </div>
 
-<!-- 🔧 Encabezado principal con logo, hamburguesa y menú -->
 <header id="site-header">
   <div class="header-container">
-
-    <!-- ☰ Botón hamburguesa (solo visible en móvil) -->
     <button id="menu-toggle" class="hamburger" aria-label="Menú">
       <span class="hamburger-icon">☰</span>
       <span class="close-icon" style="display: none;">✕</span>
     </button>
 
-    <!-- 🔗 Logo -->
     <a href="/index.html" class="logo-link">
-      <!-- 🔥 Ruta absoluta para evitar 404 -->
-      <img src="https://beteranocode.github.io/beterano-web-header/assets/logo_header.svg" 
-           alt="BETERANO" class="logo" loading="eager" />
+      <img src="https://beteranocode.github.io/assets/logo_header.svg" alt="BETERANO" class="logo" loading="eager" />
     </a>
 
-    <!-- 🧭 Navegación -->
     <nav class="nav-wrapper">
       <ul class="nav-list">
-        <!-- Versión escritorio -->
         <li class="desktop-only"><a href="#" data-i18n="beteranoGo">Beterano Go!</a></li>
         <li class="desktop-only"><a href="#" data-i18n="community">Comunidad</a></li>
         <li class="desktop-only"><a href="#" data-i18n="about">Quienes somos</a></li>
         <li class="desktop-only"><a href="#" data-i18n="shop">Shop</a></li>
 
-        <!-- Versión móvil -->
         <li class="mobile-only"><a href="#" data-i18n="beteranoGo">Beterano Go!</a></li>
         <li class="mobile-only"><a href="#" data-i18n="community">Comunidad</a></li>
         <li class="mobile-only"><a href="#" data-i18n="about">Quienes somos</a></li>
         <li class="mobile-only"><a href="#" data-i18n="shop">Shop</a></li>
 
-        <!-- Separador -->
-        <li class="mobile-only">
-          <hr style="width: 60%; border: none; border-top: 1px solid #ccc;">
-        </li>
+        <li class="mobile-only"><hr style="width: 60%; border: none; border-top: 1px solid #ccc;"></li>
 
-        <!-- 🔐 Login (solo móvil dentro del menú) -->
-        <li class="mobile-only">
-          <a href="#" aria-label="Login" class="login-emoji">👤</a>
-        </li>
+        <li class="mobile-only"><a href="#" aria-label="Login" class="login-emoji">👤</a></li>
 
-        <!-- 🌐 Selector de idioma en móvil -->
         <li class="mobile-lang-selector mobile-only">
           <select id="lang-mobile">
             <option value="es">Español</option>
@@ -73,7 +57,6 @@
       </ul>
     </nav>
 
-    <!-- 👤 Icono login escritorio -->
     <div class="header-icons desktop-only">
       <a href="#" id="login-link" title="Login" style="font-size: 20px;">👤</a>
     </div>

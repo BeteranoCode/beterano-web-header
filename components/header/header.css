@@ -10,10 +10,14 @@ body {
    Restamos esa altura al área de la app (#root) para que no use 100vh completo.
 */
 html, body { height: 100%; overflow-x: hidden; }
+/* evita que algún padding-top viejo genere scroll */
+body.header-loaded { padding-top: 0 !important; margin: 0 !important; }
 :root { --header-offset: 0px; } /* fallback */
+/* el app root ocupa 100dvh menos la altura real del header */
 body.header-loaded #root {
   min-height: calc(100dvh - var(--header-offset, 0px));
   height: calc(100dvh - var(--header-offset, 0px));
+  overflow: hidden; /*evita que #root genere scroll si se desboarda por 1px */
 }
 
 /* 📱 BASE: SMARTPHONE */
